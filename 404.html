@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Error 404</title>
+  <link rel="icon" href="https://raw.githubusercontent.com/kayexnina/SAM03_Cristobal/refs/heads/main/myLogo.png"
+    type="image" />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+</head>
+<style>
+  :root {
+    --background-color: #0a0b0c;
+    --primary-color: #ffffff;
+    --secondary-color: #f8e00b;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", Arial, sans-serif;
+  }
+
+  body {
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+  }
+
+  .container {
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+  }
+
+  .neon-text {
+    color: var(--primary-color);
+    text-shadow: 0 0 5px var(--secondary-color),
+      0 0 10px var(--secondary-color), 0 0 20px var(--secondary-color),
+      0 0 40px var(--secondary-color), 0 0 80px var(--secondary-color);
+  }
+
+  .typed-cursor {
+    font-size: 4.5rem;
+  }
+
+  .btn {
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    border: 1px solid var(--primary-color);
+  }
+
+  .btn:hover {
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+    text-decoration: none;
+  }
+
+  .flicker-on {
+    background-color: var(--primary-color);
+    opacity: 0.7;
+    filter: blur(50px);
+  }
+
+  #content {
+    opacity: 0;
+    transition: opacity 1s;
+  }
+
+  .show-content {
+    color: var(--primary-color);
+    opacity: 1;
+  }
+
+  /* Media Queries */
+  @media (min-width: 0px) and (max-width: 575.98px) {
+    .typed-cursor {
+      font-size: 2.5rem;
+    }
+
+    p {
+      font-size: 12px;
+    }
+
+    .img-fluid {
+      max-height: 70px !important;
+    }
+  }
+</style>
+
+<body>
+  <!-- Home Page -->
+  <div class="container" id="home">
+    <div class="row d-flex justify-content-center align-items-center" style="height: 100vh">
+      <div class="col-12 col-lg-6 col-md-6 text-lg-start text-center">
+        <h1 class="display-5">
+          Oop! Looks like you’ve buzzed into the wrong hive. <br />
+          <span class="display-3 auto-type neon-text" style="font-weight: 700;"></span>
+        </h1>
+        <p>Let’s get you back on track. Click below to return home!</p>
+        <a href="https://kayexnina.github.io/index.html" class="btn display-3 rounded-4 py-2 px-4"
+          style="width: auto"><strong>Return to
+            Home</strong></a>
+      </div>
+      <div class="col-12 col-lg-6 col-md-6 d-none d-lg-flex">
+        <img src="https://raw.githubusercontent.com/kayexnina/kayexnina.github.io/refs/heads/main/assets/Bee.png"
+          class="img-fluid" alt="Sad Bee" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    crossorigin="anonymous"></script>
+  <script>
+    function lightFlicker(callback) {
+      const body = document.body;
+      const container = document.querySelector(".container");
+      const flickerTimes = 10;
+      let flickerCount = 0;
+
+      const flicker = setInterval(() => {
+        body.classList.toggle("flicker-on");
+        container.classList.toggle("flicker-on");
+
+        flickerCount++;
+        if (flickerCount >= flickerTimes) {
+          clearInterval(flicker);
+          body.classList.remove("flicker-on");
+          container.classList.remove("flicker-on");
+
+          if (callback) {
+            callback();
+          }
+        }
+      }, Math.random() * 200 + 50);
+    }
+
+    function startTypingEffect() {
+      new Typed(".auto-type", {
+        strings: ["ERROR 404", "OH SHUXX!"],
+        typeSpeed: 100,
+        backSpeed: 100,
+        loop: true,
+      });
+    }
+
+    window.onload = () => {
+      document.querySelector(".auto-type").textContent = "ERROR 404";
+      lightFlicker(() => {
+        document.querySelector(".auto-type").textContent = "";
+        startTypingEffect();
+      });
+    };
+  </script>
+</body>
+
+</html>
