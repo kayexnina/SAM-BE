@@ -120,8 +120,8 @@ $result = executeQuery($query);
     <!-- Footer -->
     <footer class="text-center py-5">
       <div class="container-fluid d-flex justify-content-center align-items-center">
-        <a href="#">
-          <img src="./assets/personalLogo.png" alt="Logo" class="img-fluid" style="max-width: 150px;">
+        <a href="https://raw.githack.com/kayexnina/SAM-BE/main/index.html">
+          <img src="./assets/insideOutLogo.png" alt="Logo" class="img-fluid" style="max-width: 150px;">
         </a>
       </div>
     </footer>
