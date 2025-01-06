@@ -1,0 +1,107 @@
+:root {
+  --background-color: #ffffff;
+  --primary-color: #000000;
+  --secondary-color: #d9d9d9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--primary-color);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+.bg-body-tertiary {
+  background-color: var(--background-color) !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.navbar { 
+  background-color: var(--background-color);
+  color: var(--primary-color); 
+  transition: background-color 0.3s ease;
+}
+
+.navbar.scrolled { 
+  background-color: var(--primary-color) !important; 
+  color: var(--background-color) !important;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.nav-item .nav-link {
+  transition: all 0.3s ease;
+}
+
+.nav-item .nav-link.active {
+  background-color: var(--primary-color); 
+  color: var(--background-color);
+  border-radius: 30px;
+  width: 91px;
+  height: 40px;
+  text-align: center;
+}
+
+.navbar.scrolled .nav-item .nav-link.active {
+  background-color: var(--background-color);
+  color: var(--primary-color);
+}
+
+.navbar.scrolled .nav-item .nav-link:hover,
+body.dark-mode .navbar .nav-item .nav-link.active,
+body.dark-mode .navbar.scrolled .nav-item .nav-link:hover {
+  color: var(--background-color);
+}
+
+.nav-item .nav-link:hover,
+body.dark-mode .navbar .nav-item .nav-link:hover,
+body.dark-mode .navbar.scrolled .nav-item .nav-link.active {
+  color: var(--primary-color); 
+}
+
+.navbar.scrolled .nav-item .nav-link, 
+.nav-item .nav-link.active:hover,
+.navbar.scrolled .nav-item .nav-link.active:hover,
+body.dark-mode .navbar .nav-item .nav-link,
+body.dark-mode .navbar .nav-item .nav-link.active:hover,
+body.dark-mode .navbar.scrolled .nav-item .nav-link,
+body.dark-mode .navbar.scrolled .nav-item .nav-link.active:hover{
+  color: var(--secondary-color);
+}
+
+.vidcontainer {
+  height: 100vh;
+  width: 100%;
+}
+
+.video {
+  position: absolute;
+  width: 4000px;
+  height: 100%;
+  pointer-events: none;
+  margin-left: 50%;
+  transform: translate(-50%);
+  z-index: 0;
+}
+
+.bannercolor {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
