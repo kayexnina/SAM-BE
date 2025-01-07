@@ -27,14 +27,14 @@ html {
   scroll-behavior: smooth;
 }
 
-.navbar { 
+.navbar {
   background-color: var(--background-color);
-  color: var(--primary-color); 
+  color: var(--primary-color);
   transition: background-color 0.3s ease;
 }
 
-.navbar.scrolled { 
-  background-color: var(--primary-color) !important; 
+.navbar.scrolled {
+  background-color: var(--primary-color) !important;
   color: var(--background-color) !important;
   position: fixed;
   top: 0;
@@ -47,7 +47,7 @@ html {
 }
 
 .nav-item .nav-link.active {
-  background-color: var(--primary-color); 
+  background-color: var(--primary-color);
   color: var(--background-color);
   border-radius: 30px;
   width: 91px;
@@ -69,16 +69,16 @@ body.dark-mode .navbar.scrolled .nav-item .nav-link:hover {
 .nav-item .nav-link:hover,
 body.dark-mode .navbar .nav-item .nav-link:hover,
 body.dark-mode .navbar.scrolled .nav-item .nav-link.active {
-  color: var(--primary-color); 
+  color: var(--primary-color);
 }
 
-.navbar.scrolled .nav-item .nav-link, 
+.navbar.scrolled .nav-item .nav-link,
 .nav-item .nav-link.active:hover,
 .navbar.scrolled .nav-item .nav-link.active:hover,
 body.dark-mode .navbar .nav-item .nav-link,
 body.dark-mode .navbar .nav-item .nav-link.active:hover,
 body.dark-mode .navbar.scrolled .nav-item .nav-link,
-body.dark-mode .navbar.scrolled .nav-item .nav-link.active:hover{
+body.dark-mode .navbar.scrolled .nav-item .nav-link.active:hover {
   color: var(--secondary-color);
 }
 
@@ -104,4 +104,109 @@ body.dark-mode .navbar.scrolled .nav-item .nav-link.active:hover{
   top: 0;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 1;
+}
+
+/* about */
+.info-box {
+  background-color: var(--secondary-color);
+  padding: 10px;
+  border-radius: 5px;
+  line-height: 31px;
+}
+
+.about-title {
+  font-size: 64px;
+  font-weight: bold;
+  font-family: Impact, sans-serif;
+}
+
+.main-title {
+  font-size: 16px;
+  font-weight: bold;
+  font-family: Arial;
+}
+.subtitle {
+  font-size: 27px;
+  font-family: Georgia, "Times New Roman", Times, serif, sans-serif;
+}
+.margin-top {
+  margin-top: 100px;
+}
+.details {
+  font-size: 12px;
+  font-family: Arial;
+  line-height: 17px;
+}
+
+/* athletes -- ANG DUMI PA*/
+.card {
+  border-radius: 10px;
+  height: 400px;
+  width: 240px;
+  background-color: var(--primary-color);
+}
+
+.card p {
+  text-align: left;
+  font-style: italic;
+  font-size: 12px;
+}
+
+.card-img-top {
+  width: 125px;
+  height: 125px;
+  object-fit: cover;
+  border-radius: 100%;
+}
+
+.card-title {
+  width: 199px;
+  height: 41px;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid white;
+  text-align: center;
+  color: var(--background-color);
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.card h4 {
+  color: white;
+  opacity: 0.5;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+/* services */
+#services {
+  height: 524px;
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#services .icon-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin-top: 30px;
+}
+
+#services i {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin: 10px;
+}
+
+#services .icon-label {
+  display: block;
+  margin-top: 10px;
+  font-size: 1rem;
 }
