@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
@@ -170,11 +171,11 @@
 
     <!-- Athletes -->
     <div class="container" id="athletes">
-        <div class="row my-5">
+        <div class="row">
             <h1 class="about-title margin-top">ATHLETES</h1>
         </div>
 
-        <div class="row my-5">
+        <div class="row my-4">
             <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                 <div class="card m-3">
                     <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
@@ -299,32 +300,140 @@
     </div>
 
     <!-- Services -->
-    <div id="services" class="container my-5 py-5" style="background-color: var(--background-color)">
-        <h1 class="about-title margin-top">OUR SERVICES</h1>
-
-        <div class="icon-container">
-            <div>
-                <i class="fa-regular fa-calendar"></i>
-                <span class="icon-label">Upcoming Sessions</span>
-            </div>
-            <div>
-                <i class="fa-solid fa-hand-holding-heart"></i>
-                <span class="icon-label">Current Health Conditions</span>
-            </div>
-            <div>
-                <i class="fa-solid fa-person-running"></i>
-                <span class="icon-label">Performance Results</span>
-            </div>
-            <div>
-                <i class="fa-solid fa-medal"></i>
-                <span class="icon-label">Achievements</span>
-            </div>
-            <div>
-                <i class="fa-solid fa-box"></i>
-                <span class="icon-label">Diet Meal</span>
+    <div id="services" class="container-fluid">
+        <div class="row">
+            <div class="col py-5 mt-5" style="background-color: black;">
+                <h1 class="about-title text-light mb-3 text-center text-md-start ms-md-custom">OUR SERVICES</h1>
+                <div class="d-flex justify-content-center flex-wrap">
+                    <div class="d-flex flex-column align-items-center m-5">
+                        <i class="fa-solid fa-calendar-days text-light" style="font-size: 7rem;"></i>
+                        <span class="icon-label text-light text-center mt-1"> <b>Upcoming <br> Sessions</b></span>
+                    </div>
+                    <div class="d-flex flex-column align-items-center m-5">
+                        <i class="fa-solid fa-hand-holding-heart text-light" style="font-size: 7rem;"></i>
+                        <span class="icon-label text-light text-center mt-1"> <b>Current Health <br>
+                                Conditions</b></span>
+                    </div>
+                    <div class="d-flex flex-column align-items-center m-5">
+                        <i class="fa-solid fa-person-running text-light" style="font-size: 7rem;"></i>
+                        <span class="icon-label text-light text-center mt-1"><b>Performance <br> Results</b></span>
+                    </div>
+                    <div class="d-flex flex-column align-items-center m-5">
+                        <i class="fa-solid fa-medal text-light" style="font-size: 7rem;"></i>
+                        <span class="icon-label text-light text-center mt-1"><b>Achievements</b></span>
+                    </div>
+                    <div class="d-flex flex-column align-items-center m-5">
+                        <i class="fa-solid fa-box text-light" style="font-size: 7rem;"></i>
+                        <span class="icon-label text-light text-center mt-1"><b>Diet Meal</b></span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+    <!-- News Carousel -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <h1 class="about-title mt-5 pt-5">RECENT NEWS</h1>
+
+                <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <!-- Carousel Items -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card mx-auto mt-4"
+                                style="width: 100%; max-width: 40rem; background-color: white;">
+                                <img src="assets/carouselPic10.jpg" class="news-img-top" alt="newsPicture"
+                                    style="border-radius: 10px; height: 60%; object-fit: cover;">
+                                <div class="card-body p-4">
+                                    <h5 class="about-title" style="color: var(--primary-color); font-size: 1.75rem;">
+                                        HEADLINE</h5>
+                                    <p class="news-text"
+                                        style="font-size: 1rem; font-family: Arial, sans-serif; line-height: 1.5;">
+                                        Some quick example text to build on the card title and make up the bulk of the
+                                        card's content.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Another carousel item (repeat for more cards) -->
+                        <div class="carousel-item">
+                            <div class="card mx-auto mt-4"
+                                style="width: 100%; max-width: 40rem; background-color: white;">
+                                <img src="assets/carouselPic11.jpg" class="news-img-top" alt="newsPicture"
+                                    style="border-radius: 10px; height: 60%; object-fit: cover;">
+                                <div class="card-body p-4">
+                                    <h5 class="about-title" style="color: var(--primary-color); font-size: 1.75rem;">
+                                        Another Headline</h5>
+                                    <p class="news-text"
+                                        style="font-size: 1rem; font-family: Arial, sans-serif; line-height: 1.5;">
+                                        More example text for another card in the carousel.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Carousel Controls (Outside the card) -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#newsCarousel"
+                        data-bs-slide="prev" style="position: absolute; left: 12rem;">
+                        <i class="fa-solid fa-circle-chevron-left"
+                            style="font-size: 3rem; color: var(--primary-color);"></i>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#newsCarousel"
+                        data-bs-slide="next" style="position: absolute; right: 12rem;">
+                        <i class="fa-solid fa-circle-chevron-right"
+                            style="font-size: 3rem; color: var(--primary-color);"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="container-fluid py-2" style="background-color: var(--primary-color);"></div>
+    <footer>
+        <div class="container">
+            <div class="footerInformation">
+                <!-- Olympic Logos -->
+                <div class="olympicLogo">
+                    <img class="olympicLogoLeft" src="assets/olympicLogo.png" alt="Olympic Logo" id="olympicLogo" />
+                    <img class="olympicLogoCentered" src="assets/olympicLogo.png" alt="Olympic Logo" id="olympicLogo" />
+                </div>
+
+                <!-- Contacts Section -->
+                <div class="contacts">
+                    <!-- Email Section -->
+                    <div class="emailContainer">
+                        <div class="contactText">Registered Office</div>
+                        <p>
+                            Maison Olympique<br>
+                            1007 Lausanne<br>
+                            Switzerland<br><br>
+                            VAT & Company Identification Number<br><br>
+                            CHE-106.029.126 TVA
+                        </p>
+                    </div>
+
+                    <!-- Social Media Section -->
+                    <div class="socialsContainer">
+                        <div class="contactText">Socials</div>
+                        <div class="socialApp">
+                            <a href="#" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                            <a href="#" target="_blank"><i class="fa-brands fa-twitter"></i></a> <br>
+                            <button class="btn-contact mt-5">Contact Us</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright Section -->
+            <div class="copyright">
+                © 2025 International Olympic Committee. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
 
 
     <script src="script.js"></script>

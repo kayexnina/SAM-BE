@@ -180,33 +180,160 @@ body.dark-mode .navbar.scrolled .nav-item .nav-link.active:hover {
   line-height: 14px;
 }
 
-/* services */
-#services {
-  height: 524px;
-  background-color: var(--background-color);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+.card-text {
+  color: var(--background-color);
+}
+.ms-md-custom {
+  margin-left: 16rem; 
 }
 
-#services .icon-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  margin-top: 30px;
+@media (max-width: 768px) {
+  .ms-md-custom {
+    margin-left: 0;
+  }
+
+  .about-title {
+    text-align: center;
+  }
 }
 
-#services i {
-  font-size: 2rem;
+.container {
+  height: fit-content;
+  padding: 0 100px;
+  padding-bottom: 50px;
+}
+
+.footerInformation {
+  display: flex;
+}
+
+/* footer */
+.olympicLogo {
+  flex: 2;
+  margin-left: 2%;
+}
+
+.olympicLogoLeft {
+  width: 350px;
+  padding: 50px 0;
+}
+
+.olympicLogoCentered {
+  display: none;
+}
+
+/* contacts */
+.contacts {
+  flex: 1.5;
+  display: flex;
+  padding: 50px 0;
+}
+
+.emailContainer, .socialsContainer {
+  flex: 1;
+  margin: 0 20px;
+}
+
+.contactText {
+  font-weight: bold;
+  color: var(--blackColor);
+  padding-bottom: 15px;
+}
+
+/* social media */
+.socialsContainer a {
+  font-size: 20px;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.socialApp a i {
   color: var(--primary-color);
-  margin: 10px;
+  transition: color 0.3s ease;
 }
 
-#services .icon-label {
-  display: block;
-  margin-top: 10px;
-  font-size: 1rem;
+.socialApp a:hover i {
+  color: var(--secondary-color);
+}
+
+.copyright {
+  text-align: center;
+  color: #808080;
+}
+
+/* responsiveness */
+@media screen and (max-width: 940px) {
+  .container {
+    padding: 0 10px;
+    padding-bottom: 50px;
+  }
+
+  .olympicLogo, .contacts {
+    flex: 1;
+  }
+
+  .socials {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 795px) {
+  .olympicLogoLeft {
+    display: none;
+  }
+
+  .olympicLogoCentered {
+    display: block;
+    width: 250px;
+    margin: auto;
+    margin-bottom: 10px;
+  }
+
+  .footerInformation {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .contacts {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .emailContainer, .socialsContainer {
+    margin: 20px 0;
+  }
+
+  .container {
+    padding: 50px 20px;
+  }
+
+  .socialsContainer a {
+    margin: 0 10px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .olympicLogoCentered {
+    width: 100%;
+  }
+}
+
+.btn-contact {
+  width: 120px;
+  height: 41px;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid var(--primary-color);
+  text-align: center;
+  color: var(--primary-color);
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  background-color: transparent;
+}
+
+.btn-contact:hover {
+  background-color: var(--primary-color);
+  border-color: var(--background-color);
+  color: #fff; 
 }
