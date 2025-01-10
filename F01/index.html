@@ -25,7 +25,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item px-3">
-                        <a class="nav-link active" href="#home"><b>Home</b></a>
+                        <a class="nav-link" href="#home"><b>Home</b></a>
                     </li>
                     <li class="nav-item px-4">
                         <a class="nav-link" href="#about"><b>About</b></a>
@@ -48,393 +48,399 @@
             </div>
         </div>
     </nav>
-
+    
     <!-- Home Page -->
-    <div class="vidcontainer overflow-hidden position-relative" id="home">
-        <iframe class="video"
-            src="https://www.youtube.com/embed/iVc61V4xhlw?autoplay=1&mute=1&controls=0&rel=0&disablekb=1&loop=1&playlist=iVc61V4xhlw"
-            title="Paris 2024 Olympic Games | Official Trailer - BBC" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <div class="bannercolor"></div>
-    </div>
+    <section id="home">
+        <div class="vidContainer overflow-hidden position-relative">
+            <iframe class="video"
+                src="https://www.youtube.com/embed/iVc61V4xhlw?autoplay=1&mute=1&controls=0&rel=0&disablekb=1&loop=1&playlist=iVc61V4xhlw"
+                title="Paris 2024 Olympic Games | Official Trailer - BBC" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="bannerColor"></div>
+        </div>
+    </section>
 
     <!-- About -->
-    <div class="container" id="about">
-        <div class="row">
-            <div class="col-12 mb-4">
-                <h1 class="about-title margin-top">ABOUT</h1>
-            </div>
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <h1 class="aboutTitle marginTop">ABOUT</h1>
+                </div>
 
-            <!-- Left Column -->
-            <div class="col-lg-6 col-md-12 mb-4 d-flex justify-content-center">
-                <div class="info-box">
-                    <div id="carouselExample" class="carousel slide h-100" data-bs-ride="carousel">
-                        <div class="carousel-inner h-100">
-                            <div class="carousel-item active h-100">
-                                <img src="assets/carouselPic1.jpg" class="d-block w-100 h-100" alt="olympicImage1"
-                                    style="object-fit: cover; height: 300px;">
-                            </div>
-                            <div class="carousel-item h-100">
-                                <img src="assets/carouselPic2.jpg" class="d-block w-100 h-100" alt="olympicImage2"
-                                    style="object-fit: cover; height: 300px;">
-                            </div>
-                            <div class="carousel-item h-100">
-                                <img src="assets/carouselPic3.jpg" class="d-block w-100 h-100" alt="olympicImage3"
-                                    style="object-fit: cover; height: 300px;">
-                            </div>
-                            <div class="carousel-item h-100">
-                                <img src="assets/carouselPic4.jpg" class="d-block w-100 h-100" alt="olympicImage3"
-                                    style="object-fit: cover; height: 300px;">
-                            </div>
-                            <div class="carousel-item h-100">
-                                <img src="assets/carouselPic5.png" class="d-block w-100 h-100" alt="olympicImage3"
-                                    style="object-fit: cover; height: 300px;">
-                            </div>
-                            <div class="carousel-item h-100">
-                                <img src="assets/carouselPic6.png" class="d-block w-100 h-100" alt="olympicImage3"
-                                    style="object-fit: cover; height: 300px;">
-                            </div>
-                            <div class="carousel-item h-100">
-                                <img src="assets/carouselPic7.png" class="d-block w-100 h-100" alt="olympicImage3"
-                                    style="object-fit: cover; height: 300px;">
-                            </div>
-                            <div class="carousel-item h-100">
-                                <img src="assets/carouselPic8.jpg" class="d-block w-100 h-100" alt="olympicImage3"
-                                    style="object-fit: cover; height: 300px;">
-                            </div>
-                            <div class="carousel-item h-100">
-                                <img src="assets/carouselPic9.jpg" class="d-block w-100 h-100" alt="olympicImage3"
-                                    style="object-fit: cover; height: 300px;">
-                            </div>
-                            <div class="carousel-item h-100">
-                                <img src="assets/carouselPic10.jpg" class="d-block w-100 h-100" alt="olympicImage3"
-                                    style="object-fit: cover; height: 300px;">
+                <!-- Left Column -->
+                <div class="col-lg-6 col-md-12 mb-4 d-flex justify-content-center" style="min-height: 620px;">
+                    <div class="infoBox">
+                        <div id="carouselImgs" class="carousel slide h-100" data-bs-ride="carousel">
+                            <div class="carousel-inner h-100">
+                                <div class="carousel-item active h-100">
+                                    <img src="assets/carouselPic1.jpg" class="d-block w-100 h-100" alt="olympicImage1"
+                                        style="object-fit: cover; height: 300px;">
+                                </div>
+                                <div class="carousel-item h-100">
+                                    <img src="assets/carouselPic2.jpg" class="d-block w-100 h-100" alt="olympicImage2"
+                                        style="object-fit: cover; height: 300px;">
+                                </div>
+                                <div class="carousel-item h-100">
+                                    <img src="assets/carouselPic3.jpg" class="d-block w-100 h-100" alt="olympicImage3"
+                                        style="object-fit: cover; height: 300px;">
+                                </div>
+                                <div class="carousel-item h-100">
+                                    <img src="assets/carouselPic4.jpg" class="d-block w-100 h-100" alt="olympicImage3"
+                                        style="object-fit: cover; height: 300px;">
+                                </div>
+                                <div class="carousel-item h-100">
+                                    <img src="assets/carouselPic5.png" class="d-block w-100 h-100" alt="olympicImage3"
+                                        style="object-fit: cover; height: 300px;">
+                                </div>
+                                <div class="carousel-item h-100">
+                                    <img src="assets/carouselPic6.png" class="d-block w-100 h-100" alt="olympicImage3"
+                                        style="object-fit: cover; height: 300px;">
+                                </div>
+                                <div class="carousel-item h-100">
+                                    <img src="assets/carouselPic7.png" class="d-block w-100 h-100" alt="olympicImage3"
+                                        style="object-fit: cover; height: 300px;">
+                                </div>
+                                <div class="carousel-item h-100">
+                                    <img src="assets/carouselPic8.jpg" class="d-block w-100 h-100" alt="olympicImage3"
+                                        style="object-fit: cover; height: 300px;">
+                                </div>
+                                <div class="carousel-item h-100">
+                                    <img src="assets/carouselPic9.jpg" class="d-block w-100 h-100" alt="olympicImage3"
+                                        style="object-fit: cover; height: 300px;">
+                                </div>
+                                <div class="carousel-item h-100">
+                                    <img src="assets/carouselPic10.jpg" class="d-block w-100 h-100" alt="olympicImage3"
+                                        style="object-fit: cover; height: 300px;">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Right Column -->
-            <div class="col-12 col-md-12 col-lg-6 d-flex mx-auto">
-                <div class="row">
-                    <!-- Purpose -->
-                    <div class="col-12 col-md-12 col-lg-6 mb-4">
-                        <div class="info-box">
-                            <h4 class="main-title">Purpose</h4>
-                            <p class="subtitle">Inspire human <br> potential every day</p>
-                            <p class="details">Since ancient times, the Olympic Games have measured human potential —
-                                inspiring the best of us. Unlocking potential isn’t just for elite athletes chasing
-                                world records. Potential is inside everyone looking to get better — to be better — every
-                                single day.</p>
+                <!-- Right Column -->
+                <div class="col-12 col-md-12 col-lg-6 d-flex mx-auto">
+                    <div class="row d-flex align-items-stretch">
+                        <!-- Purpose -->
+                        <div class="col-12 col-md-12 col-lg-6 mb-4 d-flex">
+                            <div class="infoBox">
+                                <h4 class="mainTitle">Purpose</h4>
+                                <p class="subtitle">Inspire human <br> potential every day</p>
+                                <p class="details">Since ancient times, the Olympic Games have measured human potential
+                                    —
+                                    inspiring the best of us. Unlocking potential isn’t just for elite athletes chasing
+                                    world records. Potential is inside everyone looking to get better — to be better —
+                                    every
+                                    single day.</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Vision -->
-                    <div class="col-12 col-md-12 col-lg-6 mb-4">
-                        <div class="info-box">
-                            <h4 class="main-title">Vision</h4>
-                            <p class="subtitle">Build a better world <br> through sport</p>
-                            <p class="details">Sport can build friendships and bridge nations. Athletes are competitors,
-                                but respect each other in victory and defeat. Sport is a way in — a universal language
-                                accepted everywhere. It shows us we’re not that different after all.</p>
+                        <!-- Vision -->
+                        <div class="col-12 col-md-12 col-lg-6 mb-4 d-flex">
+                            <div class="infoBox">
+                                <h4 class="mainTitle">Vision</h4>
+                                <p class="subtitle">Build a better world <br> through sport</p>
+                                <p class="details">Sport can build friendships and bridge nations. Athletes are
+                                    competitors,
+                                    but respect each other in victory and defeat. Sport is a way in — a universal
+                                    language
+                                    accepted everywhere. It shows us we’re not that different after all.</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Positioning -->
-                    <div class="col-12 col-md-12 col-lg-6 mb-4">
-                        <div class="info-box">
-                            <h4 class="main-title">Positioning</h4>
-                            <p class="subtitle">Unite the world on and <br> off the field of play</p>
-                            <p class="details">The Olympic Games are about bringing people together. Nations and
-                                generations of diverse backgrounds and beliefs. A celebration of what we share and the
-                                power of our differences. Faster. Higher. Stronger. Together.</p>
+                        <!-- Positioning -->
+                        <div class="col-12 col-md-12 col-lg-6 mb-4 d-flex">
+                            <div class="infoBox">
+                                <h4 class="mainTitle">Positioning</h4>
+                                <p class="subtitle">Unite the world on and <br> off the field of play</p>
+                                <p class="details">The Olympic Games are about bringing people together. Nations and
+                                    generations of diverse backgrounds and beliefs. A celebration of what we share and
+                                    the
+                                    power of our differences. Faster. Higher. Stronger. Together.</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Values -->
-                    <div class="col-12 col-md-12 col-lg-6 mb-4">
-                        <div class="info-box">
-                            <h4 class="main-title">Values</h4>
-                            <p class="subtitle">Excellence, respect <br> and friendship</p>
-                            <p class="details">Our values help bring out the best in us. We strive for excellence and
-                                encourage people to do the best they can. We promote respect in many different ways,
-                                respect for yourself, for the rules, for your opponents, for the environment, and for
-                                the public. We celebrate friendship, which is the hallmark of the Olympic Games. There
-                                is more that unites than divides us.</p>
+                        <!-- Values -->
+                        <div class="col-12 col-md-12 col-lg-6 mb-4 d-flex">
+                            <div class="infoBox">
+                                <h4 class="mainTitle">Values</h4>
+                                <p class="subtitle">Excellence, respect <br> and friendship</p>
+                                <p class="details">Our values help bring out the best in us. We strive for excellence
+                                    and
+                                    encourage people to do the best they can. We promote respect in many different ways,
+                                    respect for yourself, for the rules, for your opponents, for the environment, and
+                                    for
+                                    the public. We celebrate friendship, which is the hallmark of the Olympic Games.
+                                    There
+                                    is more that unites than divides us.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Athletes -->
-    <div class="container" id="athletes">
-        <div class="row">
-            <h1 class="about-title margin-top">ATHLETES</h1>
+    <section id="athletes">
+        <div class="container" id="athletes">
+            <div class="row">
+                <h1 class="aboutTitle marginTop">ATHLETES</h1>
+            </div>
+
+            <div class="row my-4 justify-content-center">
+                <!-- Card 1 -->
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
+                    <div class="card m-3">
+                        <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
+                        <div class="card-body d-flex flex-column align-items-center text-center">
+                            <h5 class="cardTitle">Name</h5>
+                            <h4>Sports</h4>
+                            <p class="cardText mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
+                    <div class="card m-3">
+                        <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
+                        <div class="card-body d-flex flex-column align-items-center text-center">
+                            <h5 class="cardTitle">Name</h5>
+                            <h4>Sports</h4>
+                            <p class="cardText mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
+                    <div class="card m-3">
+                        <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
+                        <div class="card-body d-flex flex-column align-items-center text-center">
+                            <h5 class="cardTitle">Name</h5>
+                            <h4>Sports</h4>
+                            <p class="cardText mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
+                    <div class="card m-3">
+                        <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
+                        <div class="card-body d-flex flex-column align-items-center text-center">
+                            <h5 class="cardTitle">Name</h5>
+                            <h4>Sports</h4>
+                            <p class="cardText mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
+                    <div class="card m-3">
+                        <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
+                        <div class="card-body d-flex flex-column align-items-center text-center">
+                            <h5 class="cardTitle">Name</h5>
+                            <h4>Sports</h4>
+                            <p class="cardText mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
+                    <div class="card m-3">
+                        <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
+                        <div class="card-body d-flex flex-column align-items-center text-center">
+                            <h5 class="cardTitle">Name</h5>
+                            <h4>Sports</h4>
+                            <p class="cardText mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
+                    <div class="card m-3">
+                        <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
+                        <div class="card-body d-flex flex-column align-items-center text-center">
+                            <h5 class="cardTitle">Name</h5>
+                            <h4>Sports</h4>
+                            <p class="cardText mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
+                    <div class="card m-3">
+                        <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
+                        <div class="card-body d-flex flex-column align-items-center text-center">
+                            <h5 class="cardTitle">Name</h5>
+                            <h4>Sports</h4>
+                            <p class="cardText mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
+                    <div class="card m-3">
+                        <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
+                        <div class="card-body d-flex flex-column align-items-center text-center">
+                            <h5 class="cardTitle">Name</h5>
+                            <h4>Sports</h4>
+                            <p class="cardText mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
+                    <div class="card m-3">
+                        <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
+                        <div class="card-body d-flex flex-column align-items-center text-center">
+                            <h5 class="cardTitle">Name</h5>
+                            <h4>Sports</h4>
+                            <p class="cardText mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="row my-4">
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                <div class="card m-3">
-                    <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
-                    <div class="card-body d-flex flex-column align-items-center">
-                        <h5 class="card-title">Name</h5>
-                        <h4>Sports</h4>
-                        <p class="card-text mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                <div class="card m-3">
-                    <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
-                    <div class="card-body d-flex flex-column align-items-center">
-                        <h5 class="card-title">Name</h5>
-                        <h4>Sports</h4>
-                        <p class="card-text mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                <div class="card m-3">
-                    <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
-                    <div class="card-body d-flex flex-column align-items-center">
-                        <h5 class="card-title">Name</h5>
-                        <h4>Sports</h4>
-                        <p class="card-text mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                <div class="card m-3">
-                    <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
-                    <div class="card-body d-flex flex-column align-items-center">
-                        <h5 class="card-title">Name</h5>
-                        <h4>Sports</h4>
-                        <p class="card-text mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                <div class="card m-3">
-                    <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
-                    <div class="card-body d-flex flex-column align-items-center">
-                        <h5 class="card-title">Name</h5>
-                        <h4>Sports</h4>
-                        <p class="card-text mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                <div class="card m-3">
-                    <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
-                    <div class="card-body d-flex flex-column align-items-center">
-                        <h5 class="card-title">Name</h5>
-                        <h4>Sports</h4>
-                        <p class="card-text mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                <div class="card m-3">
-                    <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
-                    <div class="card-body d-flex flex-column align-items-center">
-                        <h5 class="card-title">Name</h5>
-                        <h4>Sports</h4>
-                        <p class="card-text mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                <div class="card m-3">
-                    <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
-                    <div class="card-body d-flex flex-column align-items-center">
-                        <h5 class="card-title">Name</h5>
-                        <h4>Sports</h4>
-                        <p class="card-text mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                <div class="card m-3">
-                    <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
-                    <div class="card-body d-flex flex-column align-items-center">
-                        <h5 class="card-title">Name</h5>
-                        <h4>Sports</h4>
-                        <p class="card-text mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                <div class="card m-3">
-                    <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
-                    <div class="card-body d-flex flex-column align-items-center">
-                        <h5 class="card-title">Name</h5>
-                        <h4>Sports</h4>
-                        <p class="card-text mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
+    </section>
 
     <!-- Services -->
-    <div id="services" class="container-fluid">
-        <div class="row">
-            <div class="col py-5 mt-5" style="background-color: black;">
-                <h1 class="about-title text-light mb-3 text-center text-md-start ms-md-custom">OUR SERVICES</h1>
-                <div class="d-flex justify-content-center flex-wrap">
-                    <div class="d-flex flex-column align-items-center m-5">
-                        <i class="fa-solid fa-calendar-days text-light" style="font-size: 7rem;"></i>
-                        <span class="icon-label text-light text-center mt-1"> <b>Upcoming <br> Sessions</b></span>
-                    </div>
-                    <div class="d-flex flex-column align-items-center m-5">
-                        <i class="fa-solid fa-hand-holding-heart text-light" style="font-size: 7rem;"></i>
-                        <span class="icon-label text-light text-center mt-1"> <b>Current Health <br>
-                                Conditions</b></span>
-                    </div>
-                    <div class="d-flex flex-column align-items-center m-5">
-                        <i class="fa-solid fa-person-running text-light" style="font-size: 7rem;"></i>
-                        <span class="icon-label text-light text-center mt-1"><b>Performance <br> Results</b></span>
-                    </div>
-                    <div class="d-flex flex-column align-items-center m-5">
-                        <i class="fa-solid fa-medal text-light" style="font-size: 7rem;"></i>
-                        <span class="icon-label text-light text-center mt-1"><b>Achievements</b></span>
-                    </div>
-                    <div class="d-flex flex-column align-items-center m-5">
-                        <i class="fa-solid fa-box text-light" style="font-size: 7rem;"></i>
-                        <span class="icon-label text-light text-center mt-1"><b>Diet Meal</b></span>
+    <section id="services">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col py-5 mt-5" style="background-color: var(--primary-color);">
+                    <h1 class="aboutTitle text-light mb-3 text-center">OUR SERVICES</h1>
+                    <div class="d-flex justify-content-center flex-wrap">
+                        <div class="d-flex flex-column align-items-center m-5">
+                            <i class="fa-solid fa-calendar-days text-light" style="font-size: 7rem;"></i>
+                            <span class="icon-label text-light text-center mt-1"> <b>Upcoming <br> Sessions</b></span>
+                        </div>
+                        <div class="d-flex flex-column align-items-center m-5">
+                            <i class="fa-solid fa-hand-holding-heart text-light" style="font-size: 7rem;"></i>
+                            <span class="icon-label text-light text-center mt-1"> <b>Current Health <br>
+                                    Conditions</b></span>
+                        </div>
+                        <div class="d-flex flex-column align-items-center m-5">
+                            <i class="fa-solid fa-person-running text-light" style="font-size: 7rem;"></i>
+                            <span class="icon-label text-light text-center mt-1"><b>Performance <br> Results</b></span>
+                        </div>
+                        <div class="d-flex flex-column align-items-center m-5">
+                            <i class="fa-solid fa-medal text-light" style="font-size: 7rem;"></i>
+                            <span class="icon-label text-light text-center mt-1"><b>Achievements</b></span>
+                        </div>
+                        <div class="d-flex flex-column align-items-center m-5">
+                            <i class="fa-solid fa-box text-light" style="font-size: 7rem;"></i>
+                            <span class="icon-label text-light text-center mt-1"><b>Diet Meal</b></span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- News Carousel -->
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col">
-                <h1 class="about-title mt-5 pt-5">RECENT NEWS</h1>
+    <section id="news">
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col">
+                    <h1 class="aboutTitle mt-5 pt-5">RECENT NEWS</h1>
 
-                <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <!-- Carousel Items -->
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="card mx-auto mt-4"
-                                style="width: 100%; max-width: 40rem; background-color: white;">
-                                <img src="assets/carouselPic10.jpg" class="news-img-top" alt="newsPicture"
-                                    style="border-radius: 10px; height: 60%; object-fit: cover;">
-                                <div class="card-body p-4">
-                                    <h5 class="about-title" style="color: var(--primary-color); font-size: 1.75rem;">
-                                        HEADLINE</h5>
-                                    <p class="news-text"
-                                        style="font-size: 1rem; font-family: Arial, sans-serif; line-height: 1.5;">
-                                        Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.
-                                    </p>
+                    <div id="newsCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+                        <!-- Carousel Items -->
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="card mx-auto mt-4"
+                                    style="width: 100%; max-width: 40rem; background-color: white;">
+                                    <img src="assets/carouselPic10.jpg" class="news-img-top" alt="newsPicture"
+                                        style="border-radius: 10px; height: 60%; object-fit: cover;">
+                                    <div class="card-body p-4">
+                                        <h5 class="aboutTitle" style="color: var(--primary-color); font-size: 1.75rem;">
+                                            HEADLINE</h5>
+                                        <p class="newsText" style="font-style: normal">
+                                            Some quick example text to build on the card title and make up the bulk of
+                                            the
+                                            card's content.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Another carousel item (repeat for more cards) -->
+                            <div class="carousel-item">
+                                <div class="card mx-auto mt-4"
+                                    style="width: 100%; max-width: 40rem; background-color: white;">
+                                    <img src="assets/carouselPic11.jpg" class="news-img-top" alt="newsPicture"
+                                        style="border-radius: 10px; height: 60%; object-fit: cover;">
+                                    <div class="card-body p-4">
+                                        <h5 class="aboutTitle" style="color: var(--primary-color); font-size: 1.75rem;">
+                                            Another Headline</h5>
+                                        <p class="newsText" style="font-style: normal">
+                                            More example text for another card in the carousel.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Another carousel item (repeat for more cards) -->
-                        <div class="carousel-item">
-                            <div class="card mx-auto mt-4"
-                                style="width: 100%; max-width: 40rem; background-color: white;">
-                                <img src="assets/carouselPic11.jpg" class="news-img-top" alt="newsPicture"
-                                    style="border-radius: 10px; height: 60%; object-fit: cover;">
-                                <div class="card-body p-4">
-                                    <h5 class="about-title" style="color: var(--primary-color); font-size: 1.75rem;">
-                                        Another Headline</h5>
-                                    <p class="news-text"
-                                        style="font-size: 1rem; font-family: Arial, sans-serif; line-height: 1.5;">
-                                        More example text for another card in the carousel.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- Carousel Controls (Outside the card) -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#newsCarousel"
+                            data-bs-slide="prev" style="position: absolute; left: 7rem;">
+                            <i class="fa-solid fa-circle-chevron-left"
+                                style="font-size: 3rem; color: var(--primary-color);"></i>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#newsCarousel"
+                            data-bs-slide="next" style="position: absolute; right: 7rem;">
+                            <i class="fa-solid fa-circle-chevron-right"
+                                style="font-size: 3rem; color: var(--primary-color);"></i>
+                        </button>
                     </div>
-
-                    <!-- Carousel Controls (Outside the card) -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#newsCarousel"
-                        data-bs-slide="prev" style="position: absolute; left: 12rem;">
-                        <i class="fa-solid fa-circle-chevron-left"
-                            style="font-size: 3rem; color: var(--primary-color);"></i>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#newsCarousel"
-                        data-bs-slide="next" style="position: absolute; right: 12rem;">
-                        <i class="fa-solid fa-circle-chevron-right"
-                            style="font-size: 3rem; color: var(--primary-color);"></i>
-                    </button>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Footer -->
-    <div class="container-fluid py-2" style="background-color: var(--primary-color);"></div>
-    <footer>
-        <div class="container">
-            <div class="footerInformation">
-                <!-- Olympic Logos -->
-                <div class="olympicLogo">
-                    <img class="olympicLogoLeft" src="assets/olympicLogo.png" alt="Olympic Logo" id="olympicLogo" />
-                    <img class="olympicLogoCentered" src="assets/olympicLogo.png" alt="Olympic Logo" id="olympicLogo" />
-                </div>
-
-                <!-- Contacts Section -->
-                <div class="contacts">
-                    <!-- Email Section -->
-                    <div class="emailContainer">
-                        <div class="contactText">Registered Office</div>
-                        <p>
-                            Maison Olympique<br>
-                            1007 Lausanne<br>
-                            Switzerland<br><br>
-                            VAT & Company Identification Number<br><br>
-                            CHE-106.029.126 TVA
-                        </p>
-                    </div>
-
-                    <!-- Social Media Section -->
-                    <div class="socialsContainer">
-                        <div class="contactText">Socials</div>
-                        <div class="socialApp">
-                            <a href="#" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-                            <a href="#" target="_blank"><i class="fa-brands fa-twitter"></i></a> <br>
-                            <button class="btn-contact mt-5">Contact Us</button>
-                        </div>
-                    </div>
-                </div>
+    <div class="container-fluid mt-5 py-2" style="background-color: var(--primary-color);"></div>
+    <footer class="container-fluid py-5 bg-light">
+        <div class="row">
+            <div class="col-lg-6 d-flex align-items-center justify-content-center mb-4 mb-lg-0">
+                <img src="assets/olympicLogo.png" alt="Olympic Logo" id="olympicLogo" class="img-fluid"
+                    style="max-width: 400px; height: auto;">
             </div>
-
-            <!-- Copyright Section -->
-            <div class="copyright">
-                © 2025 International Olympic Committee. All Rights Reserved.
+            <div class="col-lg-2 text-center text-lg-start" style="line-height: normal;">
+                <h5 class="mb-3" style="font-size: 22px;"><b>Registered Office</b></h5>
+                <p style="font-size: 15px;">
+                    Maison Olympique<br>
+                    1007 Lausanne<br>
+                    Switzerland<br><br>
+                    VAT & Company Identification Number<br><br>
+                    CHE-106.029.126 TVA
+                </p>
+            </div>
+            <div class="socialApp col-lg-4 text-center text-lg-start">
+                <h5 class="mb-3" style="font-size: 22px;"><b>Socials</b></h5>
+                <a href="#" target="_blank" class="me-3"><i class="fa-brands fa-youtube fa-2x"></i></a>
+                <a href="#" target="_blank"><i class="fa-brands fa-twitter fa-2x"></i></a>
+                <div class="mt-4">
+                    <button class="btnContact text-center mt-3"><b>Contact Us</b></button>
+                </div>
             </div>
         </div>
-    </footer>
 
+        <!-- Copyright Section -->
+        <div class="copyright text-center mt-4">
+            © 2025 Kaye Niña Cristobal. All Rights Reserved.
+        </div>
+    </footer>
 
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

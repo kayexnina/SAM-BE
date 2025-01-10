@@ -33,6 +33,10 @@ html {
   transition: background-color 0.3s ease;
 }
 
+.nav-link {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 .navbar.scrolled {
   background-color: var(--primary-color) !important;
   color: var(--background-color) !important;
@@ -53,6 +57,7 @@ html {
   width: 91px;
   height: 40px;
   text-align: center;
+  transform: scale(1.05);
 }
 
 .navbar.scrolled .nav-item .nav-link.active {
@@ -82,7 +87,7 @@ body.dark-mode .navbar.scrolled .nav-item .nav-link.active:hover {
   color: var(--secondary-color);
 }
 
-.vidcontainer {
+.vidContainer {
   height: 100vh;
   width: 100%;
 }
@@ -97,7 +102,7 @@ body.dark-mode .navbar.scrolled .nav-item .nav-link.active:hover {
   z-index: 0;
 }
 
-.bannercolor {
+.bannerColor {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -107,20 +112,20 @@ body.dark-mode .navbar.scrolled .nav-item .nav-link.active:hover {
 }
 
 /* about */
-.info-box {
+.infoBox {
   background-color: var(--secondary-color);
   padding: 10px;
   border-radius: 5px;
   line-height: 31px;
 }
 
-.about-title {
+.aboutTitle {
   font-size: 64px;
   font-weight: bold;
   font-family: Impact, sans-serif;
 }
 
-.main-title {
+.mainTitle {
   font-size: 16px;
   font-weight: bold;
   font-family: Arial;
@@ -129,7 +134,7 @@ body.dark-mode .navbar.scrolled .nav-item .nav-link.active:hover {
   font-size: 27px;
   font-family: Georgia, "Times New Roman", Times, serif, sans-serif;
 }
-.margin-top {
+.marginTop {
   margin-top: 100px;
 }
 .details {
@@ -159,7 +164,7 @@ body.dark-mode .navbar.scrolled .nav-item .nav-link.active:hover {
   border-radius: 100%;
 }
 
-.card-title {
+.cardTitle {
   width: 199px;
   height: 41px;
   border-radius: 10px;
@@ -180,73 +185,33 @@ body.dark-mode .navbar.scrolled .nav-item .nav-link.active:hover {
   line-height: 14px;
 }
 
-.card-text {
+.cardText {
   color: var(--background-color);
-}
-.ms-md-custom {
-  margin-left: 16rem; 
 }
 
 @media (max-width: 768px) {
-  .ms-md-custom {
-    margin-left: 0;
-  }
-
-  .about-title {
+  .aboutTitle {
     text-align: center;
   }
 }
 
-.container {
-  height: fit-content;
-  padding: 0 100px;
-  padding-bottom: 50px;
+/* news */
+.newsText{
+  font-size: 1rem;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
 }
 
-.footerInformation {
-  display: flex;
-}
 
 /* footer */
-.olympicLogo {
-  flex: 2;
-  margin-left: 2%;
-}
-
-.olympicLogoLeft {
-  width: 350px;
-  padding: 50px 0;
-}
-
-.olympicLogoCentered {
-  display: none;
-}
-
 /* contacts */
-.contacts {
-  flex: 1.5;
-  display: flex;
-  padding: 50px 0;
-}
-
-.emailContainer, .socialsContainer {
-  flex: 1;
-  margin: 0 20px;
-}
-
 .contactText {
   font-weight: bold;
-  color: var(--blackColor);
+  color: var(--primary-color);
   padding-bottom: 15px;
 }
 
 /* social media */
-.socialsContainer a {
-  font-size: 20px;
-  text-decoration: none;
-  margin-right: 10px;
-}
-
 .socialApp a i {
   color: var(--primary-color);
   transition: color 0.3s ease;
@@ -257,83 +222,23 @@ body.dark-mode .navbar.scrolled .nav-item .nav-link.active:hover {
 }
 
 .copyright {
-  text-align: center;
+  font-size: 15px;
   color: #808080;
 }
 
-/* responsiveness */
-@media screen and (max-width: 940px) {
-  .container {
-    padding: 0 10px;
-    padding-bottom: 50px;
-  }
-
-  .olympicLogo, .contacts {
-    flex: 1;
-  }
-
-  .socials {
-    display: block;
-  }
-}
-
-@media screen and (max-width: 795px) {
-  .olympicLogoLeft {
-    display: none;
-  }
-
-  .olympicLogoCentered {
-    display: block;
-    width: 250px;
-    margin: auto;
-    margin-bottom: 10px;
-  }
-
-  .footerInformation {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .contacts {
-    flex-direction: column;
-    padding: 0;
-  }
-
-  .emailContainer, .socialsContainer {
-    margin: 20px 0;
-  }
-
-  .container {
-    padding: 50px 20px;
-  }
-
-  .socialsContainer a {
-    margin: 0 10px;
-  }
-}
-
-@media screen and (max-width: 300px) {
-  .olympicLogoCentered {
-    width: 100%;
-  }
-}
-
-.btn-contact {
-  width: 120px;
+.btnContact {
+  width: 140px;
   height: 41px;
   border-radius: 10px;
-  padding: 10px;
   border: 1px solid var(--primary-color);
-  text-align: center;
   color: var(--primary-color);
   font-family: Arial, sans-serif;
-  font-weight: bold;
   font-size: 15px;
   background-color: transparent;
 }
 
-.btn-contact:hover {
+.btnContact:hover {
   background-color: var(--primary-color);
   border-color: var(--background-color);
-  color: #fff; 
+  color: var(--background-color); 
 }
