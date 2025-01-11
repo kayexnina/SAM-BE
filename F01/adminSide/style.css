@@ -1,0 +1,79 @@
+:root {
+  --background-color: #ffffff;
+  --primary-color: #000000;
+  --secondary-color: #d9d9d9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-image: url(../assets/bgAdminSide.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  overflow: hidden;
+  color: var(--primary-color);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.navbar {
+  background-color: var(--background-color);
+}
+
+.custom-container {
+  background-color: rgba(255, 255, 255, 0.65);
+  width: 1334px;
+  height: 825px;
+  border-radius: 20px;
+  margin: auto;
+}
+
+.left-column {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  height: 825px;
+}
+
+.profile-section {
+  text-align: center;
+}
+
+.profile-section img {
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.task-section {
+  border: 1px solid white;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.task-section h4 {
+  font-weight: bold;
+}
+
+.nav-item {
+  border-bottom: 1px solid white;
+  padding: 5px 0;
+  text-align: center;
+  font-size: 24px;
+  width: 100%;
+}
+
+.nav-item:hover {
+  background-color: rgba(185, 185, 185, 0.199);
+}
