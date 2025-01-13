@@ -2,6 +2,7 @@
   --background-color: #ffffff;
   --primary-color: #000000;
   --secondary-color: #d9d9d9;
+  --tertiary-color: #464646;
 }
 
 * {
@@ -16,8 +17,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 100vh;
-  overflow: hidden;
+  overflow: visible;
   color: var(--primary-color);
 }
 
@@ -28,13 +28,10 @@ html {
 .navbar {
   background-color: var(--background-color);
 }
-
-.custom-container {
-  background-color: rgba(255, 255, 255, 0.65);
-  width: 1334px;
-  height: 825px;
-  border-radius: 20px;
-  margin: auto;
+.aboutTitle {
+  font-size: 48px;
+  font-weight: bold;
+  font-family: Impact, sans-serif;
 }
 
 .left-column {
@@ -42,7 +39,6 @@ html {
   color: var(--background-color);
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
-  height: 825px;
 }
 
 .profile-section {
@@ -53,6 +49,13 @@ html {
   border-radius: 100%;
   width: 50px;
   height: 50px;
+  object-fit: cover;
+}
+
+.profile-section2 img {
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
 }
 
@@ -69,11 +72,266 @@ html {
 .nav-item {
   border-bottom: 1px solid white;
   padding: 5px 0;
-  text-align: center;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 0;
   font-size: 24px;
   width: 100%;
+  cursor: pointer;
 }
 
-.nav-item:hover {
+.nav-section .nav-item:hover {
   background-color: rgba(185, 185, 185, 0.199);
+}
+
+.nav-section .nav-item.active {
+  background-color: rgba(185, 185, 185, 0.399);
+}
+
+.card {
+  border-radius: 10px;
+  margin: auto;
+  background-color: var(--primary-color);
+  max-height: 200px;
+  max-width: 200px;
+}
+
+.card p {
+  text-align: left;
+  font-style: italic;
+  font-size: 12px;
+}
+
+.card-img-top {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.cardTitle {
+  max-width: 100px;
+  height: auto;
+  border-radius: 10px;
+  padding: 3px;
+  text-align: center;
+  background-color: var(--background-color);
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.card h4 {
+  color: white;
+  opacity: 0.5;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+@media (max-width: 768px) {
+  .aboutTitle {
+    text-align: center;
+  }
+
+  .card p {
+    font-size: 10px;
+  }
+
+  .cardTitle {
+    font-size: 14px;
+  }
+
+  .col-md-4 {
+    width: 60px;
+  }
+  .profile-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .profile-section img {
+    display: block;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+  }
+
+  .profile-section .adminName {
+    display: none;
+  }
+
+  .task-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    height: 100px;
+    text-align: center;
+  }
+
+  .task-section::before {
+    content: "\f304";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #ffffff;
+    font-size: 30px;
+  }
+
+  .task-section ul {
+    display: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .task-section h4 {
+    display: none;
+  }
+
+  .px-3 {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .mx-3 {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  .col-lg-3,
+  .col-md-4 {
+    padding: 0;
+  }
+  .nav-section .nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .nav-section .nav-item b {
+    display: none;
+  }
+
+  .nav-section .nav-item:nth-child(1)::before {
+    content: "\f0c0";
+  }
+
+  .nav-section .nav-item:nth-child(2)::before {
+    content: "\f2f2";
+  }
+
+  .nav-section .nav-item:nth-child(3)::before {
+    content: "\f013";
+  }
+
+  .nav-section .nav-item::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #ffffff;
+    font-size: 20px;
+  }
+
+  .aboutTitle {
+    font-size: 28px;
+    display: block;
+    margin-top: 1rem;
+  }
+
+  #rightSide .athleteCard .card-img-top,
+  #rightSide .athleteCard h4 {
+    display: none;
+  }
+
+  #rightSide .athleteCard .card-body h5 {
+    display: block;
+    text-align: center;
+    margin: 10px;
+  }
+
+  #rightSide .athleteCard .card-body {
+    padding: 5px;
+  }
+
+  #rightSide .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  #rightSide .athleteCard {
+    flex-basis: 100%;
+    text-align: center;
+  }
+
+  #rightSide .athleteCard .card-body {
+    display: block;
+    text-align: center;
+  }
+
+  #rightSide .col-lg-3,
+  #rightSide .col-md-4 {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .col-md-4 {
+    width: 15%;
+  }
+
+  .col-md-8 {
+    max-width: 85%;
+  }
+
+  .athleteCard {
+    margin-bottom: 10px;
+  }
+
+  .aboutTitle {
+    text-align: center;
+  }
+
+  .mb-4 {
+    margin-bottom: 0.5rem !important;
+  }
+  .container.my-5 {
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+  }
+  body {
+    background-size: auto;
+  }
+}
+
+.form-control-custom {
+  background-color: #ddd2d2;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.fa-edit {
+  color: black;
+  cursor: pointer;
+}
+
+.fa-edit:hover {
+  color: #007bff;
+}
+
+.btnForm {
+  width: 100%;
+  text-align: center;
+  background-color: #ddd2d2;
+  border-radius: 10px;
+  color: var(--primary-color);
+}
+
+.btnDelete {
+  border: 1px solid #ff0000;
+  color: #ff0000;
+  background-color: transparent;
+  border-radius: 50px;
+  font-size: 12px;
 }
