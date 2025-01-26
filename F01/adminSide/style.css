@@ -15,11 +15,16 @@
 body {
   background-image: url(../assets/bgAdminSide.png);
   background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  overflow: visible;
+  background-repeat: no-repeat; 
+  background-position: center; 
+  height: 100%; 
   color: var(--primary-color);
 }
+
+/* .container {
+  height: 100%;  
+  display: flex;
+} */
 
 html {
   scroll-behavior: smooth;
@@ -39,6 +44,13 @@ html {
   color: var(--background-color);
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
+}
+
+#rightSide {
+  height: 100vh; 
+  overflow-y: auto; 
+  overflow-x: hidden; 
+  padding: 15px;          
 }
 
 .profile-section {
@@ -158,7 +170,7 @@ html {
     height: 40px;
     object-fit: cover;
   }
-
+  
   .profile-section .adminName {
     display: none;
   }
@@ -238,6 +250,7 @@ html {
     font-size: 28px;
     display: block;
     margin-top: 1rem;
+    text-align: center;
   }
 
   #rightSide .athleteCard .card-img-top,
@@ -288,10 +301,6 @@ html {
     margin-bottom: 10px;
   }
 
-  .aboutTitle {
-    text-align: center;
-  }
-
   .mb-4 {
     margin-bottom: 0.5rem !important;
   }
@@ -303,8 +312,26 @@ html {
   body {
     background-size: auto;
   }
+  #accountButtons {
+    display: flex !important;
+    flex-direction: column;
+  }
+  
+  #accountButtons button {
+    width: 100%; 
+    margin-bottom: 10px; 
+  }
+  
+  .passwordAndDeleteColumm,
+  .profileColumn {
+    display: none;
+  }
 }
 
+
+#accountButtons {
+  display: none; 
+}
 .form-control-custom {
   background-color: #ddd2d2;
   border: 1px solid black;
@@ -334,4 +361,53 @@ html {
   background-color: transparent;
   border-radius: 50px;
   font-size: 12px;
+}
+
+.athleteCard {
+  position: relative;
+}
+
+.editIcon {
+  cursor: pointer;
+color: var(--background-color);
+}
+
+#editModal{
+  background-color: #00000091;
+}
+/* Button Styles */
+.updateBtn {
+  background-color: #00A651;
+  color: white;
+  border-radius: 10px;
+}
+
+.updateBtn:hover {
+  border: 1px solid #00A651;
+  color: #00A651;
+  background-color: transparent;
+}
+
+.doneBtn {
+  background-color: #DDD2D2;
+  color: black;
+  border-radius: 10px;
+}
+
+.doneBtn:hover {
+  border: 1px solid #DDD2D2;
+  color: #DDD2D2;
+  background-color: transparent;
+}
+
+.deleteBtn {
+  background-color: #F0282D;
+  color: white;
+  border-radius: 10px;
+}
+
+.deleteBtn:hover {
+  border: 1px solid #F0282D;
+  color: #F0282D;
+  background-color: transparent;
 }

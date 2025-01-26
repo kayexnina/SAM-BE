@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+include("connect.php");
+
+$sql = "SELECT userID, firstName, lastName, photo FROM users";
+$result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +33,7 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item px-3">
+                    <li class="nav-item px-4">
                         <a class="nav-link" href="#home"><b>Home</b></a>
                     </li>
                     <li class="nav-item px-4">
@@ -48,7 +57,7 @@
             </div>
         </div>
     </nav>
-    
+
     <!-- Home Page -->
     <section id="home">
         <div class="vidContainer overflow-hidden position-relative">
@@ -71,7 +80,7 @@
 
                 <!-- Left Column -->
                 <div class="col-lg-6 col-md-12 mb-4 d-flex justify-content-center" style="min-height: 620px;">
-                    <div class="infoBox">
+                    <div class="carouselImg">
                         <div id="carouselImgs" class="carousel slide h-100" data-bs-ride="carousel">
                             <div class="carousel-inner h-100">
                                 <div class="carousel-item active h-100">
@@ -183,135 +192,170 @@
 
     <!-- Athletes -->
     <section id="athletes">
-        <div class="container" id="athletes">
+        <div class="container">
             <div class="row">
                 <h1 class="aboutTitle marginTop">ATHLETES</h1>
             </div>
 
             <div class="row my-4 d-flex justify-content-start">
-                <!-- Card 1 -->
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
-                    <div class="card m-3">
-                        <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
-                        <div class="card-body d-flex flex-column align-items-center text-center">
-                            <h5 class="cardTitle">Name</h5>
-                            <h4>Sports</h4>
-                            <p class="cardText mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <?php while ($row = $result->fetch_assoc()): ?>
+                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 d-flex justify-content-center">
+                        <div class="card m-3">
+                            <img src="assets/athletes/<?php echo $row['photo'] ? basename($row['photo']) : 'default.jpg'; ?>"
+                                class="card-img-top mx-auto mt-4" alt="Athlete Photo">
+                            <div class="card-body d-flex flex-column align-items-center text-center">
+                                <h5 class="cardTitle"><?php echo $row['firstName'] . ' ' . $row['lastName']; ?></h5>
+                                <h4>Sports</h4>
+                                <p class="cardText mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                    eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php endwhile; ?>
+                <button class="btnSeeMore text-center mx-auto mt-5" onclick="toggleModal()"><b>See more...</b></button>
+            </div>
 
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
-                    <div class="card m-3">
-                        <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
-                        <div class="card-body d-flex flex-column align-items-center text-center">
-                            <h5 class="cardTitle">Name</h5>
-                            <h4>Sports</h4>
-                            <p class="cardText mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
-                    <div class="card m-3">
-                        <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
-                        <div class="card-body d-flex flex-column align-items-center text-center">
-                            <h5 class="cardTitle">Name</h5>
-                            <h4>Sports</h4>
-                            <p class="cardText mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
-                </div>
+        </div>
+    </section>
 
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
-                    <div class="card m-3">
-                        <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
-                        <div class="card-body d-flex flex-column align-items-center text-center">
-                            <h5 class="cardTitle">Name</h5>
-                            <h4>Sports</h4>
-                            <p class="cardText mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
-                    <div class="card m-3">
-                        <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
-                        <div class="card-body d-flex flex-column align-items-center text-center">
-                            <h5 class="cardTitle">Name</h5>
-                            <h4>Sports</h4>
-                            <p class="cardText mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
-                </div>
+    <!-- Sign Up -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-8 col-lg-6 mx-auto">
+                <div class="modal modalSignUp" id="modalSignUp" tabindex="-1" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog modal-lg" style="max-width: 800px; min-width: 300px;">
+                        <h1 class="modalHeaderTitle d-flex justify-content-center align-items-center text-center">
+                            BE AN ORGANIZED ATHLETE. BE ONE OF THEM.
+                        </h1>
 
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
-                    <div class="card m-3">
-                        <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
-                        <div class="card-body d-flex flex-column align-items-center text-center">
-                            <h5 class="cardTitle">Name</h5>
-                            <h4>Sports</h4>
-                            <p class="cardText mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
-                </div>
+                        <div class="modal-content p-4" style="background-color: #ffffff; border-radius: 10px;">
+                            <div class="modal-header border-0" style="position: relative;">
+                                <button class="fa-solid fa-rectangle-xmark" onclick="toggleModal()"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h3 class="text-start mb-3">Fill out this form.</h3>
+                                <form action="createAccount.php" method="POST" enctype="multipart/form-data">
+                                    <div class="row g-3">
+                                        <div class="col-12 col-sm-6">
+                                            <label for="firstName">First Name</label>
+                                            <input type="text" id="firstName" name="firstName" class="form-control"
+                                                required />
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <label for="lastName">Last Name</label>
+                                            <input type="text" id="lastName" name="lastName" class="form-control"
+                                                required />
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <label for="photo">Photo (Optional)</label>
+                                            <input type="file" id="photo" name="photo" class="form-control" />
 
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
-                    <div class="card m-3">
-                        <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
-                        <div class="card-body d-flex flex-column align-items-center text-center">
-                            <h5 class="cardTitle">Name</h5>
-                            <h4>Sports</h4>
-                            <p class="cardText mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
-                </div>
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <label for="dob">Date of Birth</label>
+                                            <input type="date" id="dob" name="dob" class="form-control" required />
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <label for="gender" class="form-label">Gender</label>
+                                            <select name="gender" id="gender" class="form-select" required>
+                                                <option value="M">Male</option>
+                                                <option value="F">Female</option>
+                                                <option value="X">LGBTQIA+</option>
+                                                <option value="P">Prefer not to say</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <label for="country">Country</label>
+                                            <input type="text" id="country" name="country" class="form-control"
+                                                required />
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <label for="phone">Phone Number</label>
+                                            <input type="tel" id="phone" name="phone" class="form-control" required />
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <label for="email">Email Address</label>
+                                            <input type="email" id="email" name="email" class="form-control" required />
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="password">Password</label>
+                                            <input type="password" id="password" name="password" class="form-control"
+                                                required />
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="confirmPassword">Confirm Password</label>
+                                            <input type="password" id="confirmPassword" name="confirmPassword"
+                                                class="form-control" required />
+                                        </div>
+                                    </div>
 
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
-                    <div class="card m-3">
-                        <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
-                        <div class="card-body d-flex flex-column align-items-center text-center">
-                            <h5 class="cardTitle">Name</h5>
-                            <h4>Sports</h4>
-                            <p class="cardText mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
-                </div>
+                                    <div class="d-flex justify-content-center mt-3">
+                                        <button type="submit" class="btnSignUp text-center">
+                                            <b>Create Account</b>
+                                        </button>
+                                    </div>
+                                </form>
 
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
-                    <div class="card m-3">
-                        <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
-                        <div class="card-body d-flex flex-column align-items-center text-center">
-                            <h5 class="cardTitle">Name</h5>
-                            <h4>Sports</h4>
-                            <p class="cardText mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
-                    <div class="card m-3">
-                        <img src="assets/carouselPic1.jpg" class="card-img-top mx-auto mt-4">
-                        <div class="card-body d-flex flex-column align-items-center text-center">
-                            <h5 class="cardTitle">Name</h5>
-                            <h4>Sports</h4>
-                            <p class="cardText mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <p class="text-center mt-3">
+                                    <b>Have an account?</b>
+                                    <a onclick="toggleLoginModal()" class="toggle-link"
+                                        style="color: var(--primary-color);">Login</a>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="container">
+        <div class="modal modalLogin" id="modalLogin" tabindex="-1" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-lg" style="max-width: 800px;">
+                <div class="modal-content p-3" style="background-color: #ffffff; border-radius: 10px;">
+                    <div class="modal-header border-0" style="position: relative;">
+                        <button class="fa-solid fa-rectangle-xmark" onclick="toggleModal()" aria-label="Close"
+                            style="position: absolute; top: 10px; right: 10px; color: #000000; font-size: 2rem; background: none; border: none;"></button>
+                    </div>
+                    <div class="modal-body">
+                        <a class="col-12 d-flex justify-content-center mx-auto mb-2" href="#">
+                            <img src="assets/olympicLogoNoName.png" alt="olympicLogo" width="450" height="80">
+                        </a>
+
+                        <h3 style="text-align: center; margin-bottom: 24px;">Login</h3>
+                        <form action="login.php" method="POST" enctype="multipart/form-data">
+                            <div class="form-container d-flex flex-wrap justify-content-center py-3" style="gap: 1rem;">
+                                <div class="col-12 form-group" style="flex: 0 0 98%;">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" name="email" class="form-control" required />
+                                </div>
+                                <div class="col-12 form-group" style="flex: 0 0 98%;">
+                                    <label for="password">Password</label>
+                                    <input type="password" id="password" name="password" class="form-control"
+                                        required />
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center mt-3">
+                                <button type="submit" class="btnLogin text-center">
+                                    <b>Login</b>
+                                </button>
+                            </div>
+                        </form>
+                        <p class="text-center mt-3 login-link">
+                            <b>Don't have an account?</b>
+                            <a onclick="toggleSignUpModal()" class="toggle-link">Sign Up</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <!-- Services -->
     <section id="services">
@@ -354,7 +398,7 @@
                 <div class="col">
                     <h1 class="aboutTitle mt-5 pt-5">RECENT NEWS</h1>
 
-                    <div id="newsCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+                    <div id="newsCarousel" class="carousel slide mb-5 position-relative">
                         <!-- Carousel Items -->
                         <div class="carousel-inner">
                             <div class="carousel-item active">
@@ -374,11 +418,11 @@
                                 </div>
                             </div>
 
-                            <!-- Another carousel item (repeat for more cards) -->
+                            <!-- Another carousel item -->
                             <div class="carousel-item">
                                 <div class="card mx-auto mt-4"
                                     style="width: 100%; max-width: 40rem; background-color: white;">
-                                    <img src="assets/carouselPic11.jpg" class="news-img-top" alt="newsPicture"
+                                    <img src="assets/carouselPic5.png" class="news-img-top" alt="newsPicture"
                                         style="border-radius: 10px; height: 60%; object-fit: cover;">
                                     <div class="card-body p-4">
                                         <h5 class="aboutTitle" style="color: var(--primary-color); font-size: 1.75rem;">
@@ -391,22 +435,21 @@
                             </div>
                         </div>
 
-                        <!-- Carousel Controls (Outside the card) -->
-                        <button class="carousel-control-prev" type="button" data-bs-target="#newsCarousel"
-                            data-bs-slide="prev" style="position: absolute; left: 7rem;">
-                            <i class="fa-solid fa-circle-chevron-left"
-                                style="font-size: 3rem; color: var(--primary-color);"></i>
+                        <!-- Carousel Controls -->
+                        <button class="carousel-control-prev d-none d-md-block" type="button"
+                            data-bs-target="#newsCarousel" data-bs-slide="prev">
+                            <i class="fa-solid fa-circle-chevron-left control-icon"></i>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#newsCarousel"
-                            data-bs-slide="next" style="position: absolute; right: 7rem;">
-                            <i class="fa-solid fa-circle-chevron-right"
-                                style="font-size: 3rem; color: var(--primary-color);"></i>
+                        <button class="carousel-control-next d-none d-md-block" type="button"
+                            data-bs-target="#newsCarousel" data-bs-slide="next">
+                            <i class="fa-solid fa-circle-chevron-right control-icon"></i>
                         </button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- Footer -->
     <div class="container-fluid mt-5 py-2" style="background-color: var(--primary-color);"></div>

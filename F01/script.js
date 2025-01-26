@@ -77,3 +77,59 @@ window.addEventListener('scroll', function () {
         }
     });
 });
+
+// modal
+function toggleModal() { 
+    const modalSignUp = document.getElementById('modalSignUp');
+    const modalLogin = document.getElementById('modalLogin');
+    const body = document.body;
+
+    if (modalSignUp.style.display === 'flex' || modalLogin.style.display === 'flex') {
+        modalSignUp.style.display = 'none';
+        modalLogin.style.display = 'none';
+        body.style.overflow = 'auto';  
+    } else {
+        modalSignUp.style.display = 'flex';
+        body.style.overflow = 'hidden';  
+    }
+}
+
+// Login Modal
+function toggleLoginModal() {
+    const modalSignUp = document.getElementById('modalSignUp');
+    const modalLogin = document.getElementById('modalLogin');
+    const body = document.body;
+    body.style.overflow = 'hidden';
+    modalLogin.style.display = 'flex';
+    modalSignUp.style.display = 'none';
+}
+
+// Sign Up Modal
+function toggleSignUpModal() {
+    const modalSignUp = document.getElementById('modalSignUp');
+    const modalLogin = document.getElementById('modalLogin');
+    const body = document.body;
+    body.style.overflow = 'hidden';
+    modalSignUp.style.display = 'flex';
+    modalLogin.style.display = 'none';
+}
+
+// Carousel
+document.addEventListener('DOMContentLoaded', function () {
+  const newsCarousel = new bootstrap.Carousel(document.getElementById('newsCarousel'), {
+    ride: 'carousel', 
+  });
+
+  function toggleCarousel() {
+    if (window.innerWidth <= 768) {
+      newsCarousel.cycle();
+    } else {
+      newsCarousel.pause();
+    }
+  }
+
+  window.addEventListener('resize', toggleCarousel);
+  toggleCarousel();
+});
+
+  

@@ -33,10 +33,6 @@ html {
   transition: background-color 0.3s ease;
 }
 
-.nav-link {
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
 .navbar.scrolled {
   background-color: var(--primary-color) !important;
   color: var(--background-color) !important;
@@ -46,18 +42,14 @@ html {
   z-index: 10;
 }
 
-.nav-item .nav-link {
-  transition: all 0.3s ease;
-}
-
 .nav-item .nav-link.active {
   background-color: var(--primary-color);
   color: var(--background-color);
   border-radius: 30px;
-  width: 91px;
+  width: 100px;
   height: 40px;
   text-align: center;
-  transform: scale(1.05);
+  transition: all 0.3s ease;
 }
 
 .navbar.scrolled .nav-item .nav-link.active {
@@ -112,11 +104,23 @@ body.dark-mode .navbar.scrolled .nav-item .nav-link.active:hover {
 }
 
 /* about */
+.carouselImg {
+  background-color: var(--secondary-color);
+  padding: 10px;
+  border-radius: 5px;
+  line-height: 31px;
+}
+
 .infoBox {
   background-color: var(--secondary-color);
   padding: 10px;
   border-radius: 5px;
   line-height: 31px;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.infoBox:hover {
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 .aboutTitle {
@@ -143,7 +147,7 @@ body.dark-mode .navbar.scrolled .nav-item .nav-link.active:hover {
   line-height: 17px;
 }
 
-/* athletes -- ANG DUMI PA*/
+/* athletes */
 .card {
   border-radius: 10px;
   height: 400px;
@@ -189,29 +193,37 @@ body.dark-mode .navbar.scrolled .nav-item .nav-link.active:hover {
   color: var(--background-color);
 }
 
-@media (max-width: 768px) {
-  .aboutTitle {
-    text-align: center;
-  }
-}
-
 /* news */
-.newsText{
+.newsText {
   font-size: 1rem;
   font-family: Arial, sans-serif;
   line-height: 1.5;
 }
 
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+#newsCarousel {
+  position: relative;
+}
+
+.control-icon {
+  font-size: 3rem;
+  color: var(--primary-color);
+}
 
 /* footer */
-/* contacts */
 .contactText {
   font-weight: bold;
   color: var(--primary-color);
   padding-bottom: 15px;
 }
 
-/* social media */
 .socialApp a i {
   color: var(--primary-color);
   transition: color 0.3s ease;
@@ -226,7 +238,7 @@ body.dark-mode .navbar.scrolled .nav-item .nav-link.active:hover {
   color: #808080;
 }
 
-.btnContact {
+.btnContact, .btnSeeMore {
   width: 140px;
   height: 41px;
   border-radius: 10px;
@@ -237,8 +249,204 @@ body.dark-mode .navbar.scrolled .nav-item .nav-link.active:hover {
   background-color: transparent;
 }
 
-.btnContact:hover {
+.btnContact:hover, 
+.btnSeeMore:hover {
   background-color: var(--primary-color);
   border-color: var(--background-color);
-  color: var(--background-color); 
+  color: var(--background-color);
+}
+
+/* signup and login modals */
+.modalSignUp,
+.modalLogin {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(
+    0,
+    0,
+    0,
+    0.9
+  );
+  z-index: 1000;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+.modalSignUp.is-visible {
+  display: flex;
+}
+.modalSignUpContent {
+  background: var(--background-color);
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10% auto;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.modalSignUpContent form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modalSignUpContent h3 {
+  text-align: start;
+}
+
+.modalSignUpContent .form-group,
+.modalSignUpContent .form-select {
+  margin-bottom: 10px;
+}
+
+.modalSignUpContent .form-group label,
+.modalSignUpContent .form-select label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-label{
+  margin-bottom: 0 !important;
+}
+.modalSignUpContent .form-group input,
+.modalSignUpContent .form-select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Hover effect for the select element */
+.modalSignUpContent .form-select:hover {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+/* Focus effect for the select element */
+.modalSignUpContent .form-select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.form-select{
+  cursor: pointer !important;
+}
+
+.modalSignUpContent .mx-auto.create-account {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  color: white;
+  background-color: var(--primary-color);
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-lg {
+  max-width: 1000px;
+  min-width: 200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.modal-dialog {
+  padding: 10px;
+}
+
+.modalHeaderTitle {
+  font-size: 45px;
+  color: #ffffff;
+  white-space: normal;
+  word-break: break-word;
+  text-align: center;
+  font-family: Impact;
+}
+
+.login-link {
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.login-link a {
+  text-decoration: underline;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+.form-group label,
+h3 {
+  font-weight: bold;
+}
+
+.btnSignUp,
+.btnLogin {
+  width: 201px;
+  height: 50px;
+  border-radius: 30px;
+  color: var(--background-color);
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.btnSignUp:hover,
+.btnLogin:hover {
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
+button.fa-solid {
+  font-size: 3rem; 
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #000000;
+  background: none;
+  border: none;
+}
+
+@media (max-width: 576px) {
+  .fa-solid {
+    font-size: 2.5rem !important;
+  }
+  .aboutTitle {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutTitle {
+    text-align: center;
+  }
+
+  .fa-solid {
+    font-size: 3rem !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .modalHeaderTitle {
+    font-size: 28px;
+  }
+  button.fa-solid {
+    font-size: 1.5rem !important;
+    top: 5px;
+    right: 5px; 
+  }
+}
+@media (max-width: 576px), (max-width: 768px) {
+  .carousel-control-prev,
+  .carousel-control-next {
+    display: none !important;
+  }
 }
