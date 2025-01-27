@@ -1,3 +1,29 @@
+<?php
+session_start();
+include("../connect.php");
+
+if (!isset($_SESSION['email'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$userEmail = $_SESSION['email'];
+$stmt = $conn->prepare("SELECT photo, firstName, lastName FROM users WHERE email = ?");
+$stmt->bind_param("s", $userEmail);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+    $user = $result->fetch_assoc();
+    $photo = $user['photo']; 
+    $firstName = $user['firstName'];
+    $lastName = $user['lastName'];
+} else {
+    echo '<script>alert("User details not found!");</script>';
+    header("Location: login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,6 +31,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Athlete Dashboard</title>
+    <link rel="icon" href="./assets/olympicIcon.ico" type="icon" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -19,13 +46,12 @@
                 style="background-color: var(--primary-color); color: var(--background-color); height: 100vh;">
                 <img class="olympicLogo d-none" id="olympicLogoImg" src="../assets/whiteOlympicLogo.png"
                     alt="olympicLogo" width="270" height="50">
-
-
                 <!-- Profile Section -->
                 <div class="profileSection text-center d-flex flex-column align-items-center mx-2 mt-4">
-                    <img src="../assets/carouselPic5.png" alt="Profile Picture">
+                    <img src="../assets/athletes/<?php echo $photo ? basename($photo) : 'default.jpg'; ?>"
+                        alt="Profile Picture">
                     <div class="athleteName my-2" style="font-size: 20px;">
-                        <b>Juan Dela Cruz</b>
+                        <b><?php echo $firstName . " " . $lastName; ?></b>
                     </div>
                     <div class="athleteSport mb-3" style="font-size: 14px; line-height: .05;">Basketball</div>
                     <button class="btnEdit px-4 py-1 d-none d-md-block">
@@ -34,7 +60,7 @@
                     <i class="fa-solid fa-pen d-block d-md-none mt-5" type="button"
                         style="font-size: 24px; color: #ffffff;"></i>
                 </div>
-
+                
                 <!-- Navigation Section -->
                 <div class="nav-section mt-5">
                     <div class="nav-item d-flex align-items-center px-3 active" data-target="dashboardSection">
@@ -548,7 +574,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Physical Health Metrics Modal -->
     <div class="modal fade" id="physicalHealthModal" tabindex="-1" aria-labelledby="physicalHealthModalLabel"
         aria-hidden="true">

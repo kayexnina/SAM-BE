@@ -1,3 +1,30 @@
+<?php
+session_start();
+include("../connect.php");
+
+if (!isset($_SESSION['email'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$adminEmail = $_SESSION['email'];
+$stmt = $conn->prepare("SELECT photo, firstName, lastName FROM adminProfile WHERE email = ?");
+$stmt->bind_param("s", $adminEmail);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+    $admin = $result->fetch_assoc();
+    $photo = $admin['photo'] ?: '../assets/default-profile.png';
+    $firstName = $admin['firstName'];
+    $lastName = $admin['lastName'];
+} else {
+    echo '<script>alert("Admin details not found!");</script>';
+    header("Location: ./index.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,6 +32,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Dashboard</title>
+    <link rel="icon" href="./assets/olympicIcon.ico" type="icon" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -26,9 +54,11 @@
             <div class="col-md-4"
                 style="background-color: var(--primary-color); color: var(--background-color); border-top-left-radius: 20px; border-bottom-left-radius: 20px;">
                 <div class="profile-section d-flex align-items-center mx-2 mt-4">
-                    <img src="../assets/carouselPic5.png" alt="Profile Picture">
+                    <img src="../assets/<?php echo $photo ? basename($photo) : 'default.jpg'; ?>" alt="Profile Picture"
+                        style="width: 50px; height: 50px; border-radius: 50%;">
+
                     <div class="adminName my-2 px-2" style="font-size: 16px; line-height: normal;">
-                        <b>Juan Dela Cruz</b>
+                        <b><?php echo htmlspecialchars($firstName) . ' ' . htmlspecialchars($lastName); ?></b>
                         <div class="adminLabel d-flex align-items-center" style="font-size: 14px;">Admin</div>
                     </div>
                 </div>
@@ -36,10 +66,10 @@
                 <div class="task-section my-5 mx-3 py-4 px-3">
                     <h4 class="mb-4" style="font-size: 32px;">My Tasks</h4>
                     <ul class="list-unstyled">
-                        <li><input type="checkbox"> Task Name</li>
-                        <li><input type="checkbox"> Task Name</li>
-                        <li><input type="checkbox"> Task Name</li>
-                        <li><input type="checkbox"> Task Name</li>
+                        <li><input type="checkbox"> Task Name 1</li>
+                        <li><input type="checkbox"> Task Name 2</li>
+                        <li><input type="checkbox"> Task Name 3</li>
+                        <li><input type="checkbox"> Task Name 4</li>
                     </ul>
                 </div>
 
@@ -60,170 +90,80 @@
                 <div id="athletesSection" class="section-content" style="display: block;">
                     <h1 class="aboutTitle mt-3"> ALL ATHLETES</h1>
                     <div class="row d-flex justify-content-start">
-                        <!-- Athlete Cards -->
-                        <div class="col-12 col-lg-4 col-md-6 mb-4 athleteCard">
-                            <div class="card" data-bs-toggle="modal" data-bs-target="#editModal">
-                                <img src="../assets/carouselPic10.jpg" class="card-img-top mx-auto mt-4">
-                                <div class="card-body text-center">
-                                    <h5 class="cardTitle mx-auto">Abuleigh</h5>
-                                    <h4>Sports</h4>
-                                </div>
-                                <div class="editIcon position-absolute top-0 end-0 p-2">
-                                    <i class="fa-solid fa-user-pen"></i>
-                                </div>
-                            </div>
-                        </div>
+                        <?php
+                        $query = "
+                SELECT u.lastName, u.photo, a.sportDiscipline 
+                FROM users u
+                INNER JOIN athleticdetails a ON u.userID = a.userID
+            ";
+                        $athletesResult = $conn->query($query);
 
-                        <div class="col-12 col-lg-4 col-md-6 mb-4 athleteCard">
-                            <div class="card" data-bs-toggle="modal" data-bs-target="#editModal">
-                                <img src="../assets/carouselPic10.jpg" class="card-img-top mx-auto mt-4">
-                                <div class="card-body text-center">
-                                    <h5 class="cardTitle mx-auto">Abuleigh</h5>
-                                    <h4>Sports</h4>
+                        if ($athletesResult->num_rows > 0):
+                            while ($athlete = $athletesResult->fetch_assoc()):
+                                ?>
+                                <div class="col-12 col-lg-4 col-md-6 mb-4 athleteCard">
+                                    <div class="card" data-bs-toggle="modal" data-bs-target="#editModal">
+                                        <img src="../assets/athletes/<?php echo $athlete['photo'] ? basename($athlete['photo']) : 'default.jpg'; ?>"
+                                            class="card-img-top mx-auto mt-4" alt="Athlete Profile Picture">
+                                        <div class="card-body text-center">
+                                            <h5 class="cardTitle mx-auto">
+                                                <?php echo htmlspecialchars($athlete['lastName']); ?>
+                                            </h5>
+                                            <h4>
+                                                <?php echo htmlspecialchars($athlete['sportDiscipline']) ?: 'N/A'; ?>
+                                            </h4>
+                                        </div>
+                                        <div class="editIcon position-absolute top-0 end-0 p-2">
+                                            <i class="fa-solid fa-user-pen"></i>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="editIcon position-absolute top-0 end-0 p-2">
-                                    <i class="fa-solid fa-user-pen"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-lg-4 col-md-6 mb-4 athleteCard">
-                            <div class="card" data-bs-toggle="modal" data-bs-target="#editModal">
-                                <img src="../assets/carouselPic10.jpg" class="card-img-top mx-auto mt-4">
-                                <div class="card-body text-center">
-                                    <h5 class="cardTitle mx-auto">Abuleigh</h5>
-                                    <h4>Sports</h4>
-                                </div>
-                                <div class="editIcon position-absolute top-0 end-0 p-2">
-                                    <i class="fa-solid fa-user-pen"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-lg-4 col-md-6 mb-4 athleteCard">
-                            <div class="card" data-bs-toggle="modal" data-bs-target="#editModal">
-                                <img src="../assets/carouselPic10.jpg" class="card-img-top mx-auto mt-4">
-                                <div class="card-body text-center">
-                                    <h5 class="cardTitle mx-auto">Abuleigh</h5>
-                                    <h4>Sports</h4>
-                                </div>
-                                <div class="editIcon position-absolute top-0 end-0 p-2">
-                                    <i class="fa-solid fa-user-pen"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-lg-4 col-md-6 mb-4 athleteCard">
-                            <div class="card" data-bs-toggle="modal" data-bs-target="#editModal">
-                                <img src="../assets/carouselPic10.jpg" class="card-img-top mx-auto mt-4">
-                                <div class="card-body text-center">
-                                    <h5 class="cardTitle mx-auto">Abuleigh</h5>
-                                    <h4>Sports</h4>
-                                </div>
-                                <div class="editIcon position-absolute top-0 end-0 p-2">
-                                    <i class="fa-solid fa-user-pen"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-lg-4 col-md-6 mb-4 athleteCard">
-                            <div class="card" data-bs-toggle="modal" data-bs-target="#editModal">
-                                <img src="../assets/carouselPic10.jpg" class="card-img-top mx-auto mt-4">
-                                <div class="card-body text-center">
-                                    <h5 class="cardTitle mx-auto">Abuleigh</h5>
-                                    <h4>Sports</h4>
-                                </div>
-                                <div class="editIcon position-absolute top-0 end-0 p-2">
-                                    <i class="fa-solid fa-user-pen"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-lg-4 col-md-6 mb-4 athleteCard">
-                            <div class="card" data-bs-toggle="modal" data-bs-target="#editModal">
-                                <img src="../assets/carouselPic10.jpg" class="card-img-top mx-auto mt-4">
-                                <div class="card-body text-center">
-                                    <h5 class="cardTitle mx-auto">Abuleigh</h5>
-                                    <h4>Sports</h4>
-                                </div>
-                                <div class="editIcon position-absolute top-0 end-0 p-2">
-                                    <i class="fa-solid fa-user-pen"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-lg-4 col-md-6 mb-4 athleteCard">
-                            <div class="card" data-bs-toggle="modal" data-bs-target="#editModal">
-                                <img src="../assets/carouselPic10.jpg" class="card-img-top mx-auto mt-4">
-                                <div class="card-body text-center">
-                                    <h5 class="cardTitle mx-auto">Abuleigh</h5>
-                                    <h4>Sports</h4>
-                                </div>
-                                <div class="editIcon position-absolute top-0 end-0 p-2">
-                                    <i class="fa-solid fa-user-pen"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-lg-4 col-md-6 mb-4 athleteCard">
-                            <div class="card" data-bs-toggle="modal" data-bs-target="#editModal">
-                                <img src="../assets/carouselPic10.jpg" class="card-img-top mx-auto mt-4">
-                                <div class="card-body text-center">
-                                    <h5 class="cardTitle mx-auto">Abuleigh</h5>
-                                    <h4>Sports</h4>
-                                </div>
-                                <div class="editIcon position-absolute top-0 end-0 p-2">
-                                    <i class="fa-solid fa-user-pen"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-lg-4 col-md-6 mb-4 athleteCard">
-                            <div class="card" data-bs-toggle="modal" data-bs-target="#editModal">
-                                <img src="../assets/carouselPic10.jpg" class="card-img-top mx-auto mt-4">
-                                <div class="card-body text-center">
-                                    <h5 class="cardTitle mx-auto">Abuleigh</h5>
-                                    <h4>Sports</h4>
-                                </div>
-                                <div class="editIcon position-absolute top-0 end-0 p-2">
-                                    <i class="fa-solid fa-user-pen"></i>
-                                </div>
-                            </div>
-                        </div>
+                            <?php
+                            endwhile;
+                        else:
+                            ?>
+                            <p class="text-center">No athletes found.</p>
+                        <?php endif; ?>
                     </div>
                 </div>
 
                 <div id="recentlyViewedSection" class="section-content" style="display: none;">
                     <h1 class="aboutTitle mt-3"> HISTORY </h1>
                     <div class="row d-flex justify-content-start">
-                        <!-- Athlete Cards -->
-                        <div class="col-12 col-lg-4 col-md-6 mb-4 athleteCard">
-                            <div class="card" data-bs-toggle="modal" data-bs-target="#editModal">
-                                <img src="../assets/carouselPic10.jpg" class="card-img-top mx-auto mt-4">
-                                <div class="card-body text-center">
-                                    <h5 class="cardTitle mx-auto">Abuleigh</h5>
-                                    <h4>Sports</h4>
+                        <?php
+                        $query = "
+                SELECT u.lastName, u.photo, a.sportDiscipline 
+                FROM users u
+                INNER JOIN athleticdetails a ON u.userID = a.userID
+            ";
+                        $athletesResult = $conn->query($query);
+
+                        if ($athletesResult->num_rows > 0):
+                            while ($athlete = $athletesResult->fetch_assoc()):
+                                ?>
+                                <div class="col-12 col-lg-4 col-md-6 mb-4 athleteCard">
+                                    <div class="card" data-bs-toggle="modal" data-bs-target="#editModal">
+                                        <img src="../assets/athletes/<?php echo $athlete['photo'] ? basename($athlete['photo']) : 'default.jpg'; ?>"
+                                            class="card-img-top mx-auto mt-4" alt="Athlete Profile Picture">
+                                        <div class="card-body text-center">
+                                            <h5 class="cardTitle mx-auto">
+                                                <?php echo htmlspecialchars($athlete['lastName']); ?>
+                                            </h5>
+                                            <h4>
+                                                <?php echo htmlspecialchars($athlete['sportDiscipline']) ?: 'N/A'; ?>
+                                            </h4>
+                                        </div>
+                                        <div class="editIcon position-absolute top-0 end-0 p-2">
+                                            <i class="fa-solid fa-user-pen"></i>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4 col-md-6 mb-4 athleteCard">
-                            <div class="card" data-bs-toggle="modal" data-bs-target="#editModal">
-                                <img src="../assets/carouselPic10.jpg" class="card-img-top mx-auto mt-4">
-                                <div class="card-body text-center">
-                                    <h5 class="cardTitle mx-auto">Abuleigh</h5>
-                                    <h4>Sports</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4 col-md-6 mb-4 athleteCard">
-                            <div class="card" data-bs-toggle="modal" data-bs-target="#editModal">
-                                <img src="../assets/carouselPic10.jpg" class="card-img-top mx-auto mt-4">
-                                <div class="card-body text-center">
-                                    <h5 class="cardTitle mx-auto">Abuleigh</h5>
-                                    <h4>Sports</h4>
-                                </div>
-                            </div>
-                        </div>
+                            <?php
+                            endwhile;
+                        else:
+                            ?>
+                            <p class="text-center">No athletes found.</p>
+                        <?php endif; ?>
                     </div>
                 </div>
 
@@ -372,7 +312,7 @@
                     <form>
                         <div class="mb-3">
                             <label for="athleteName" class="form-label">Athlete Name</label>
-                            <input type="text" class="form-control" id="athleteName" placeholder="Abuleigh">
+                            <input type="text" class="form-control" id="athleteName" placeholder="Name">
                         </div>
                         <div class="mb-3">
                             <label for="athleteSport" class="form-label">Sport</label>

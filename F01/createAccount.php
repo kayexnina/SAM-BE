@@ -43,34 +43,49 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die("Password must contain at least one special character.");
     }
 
-    // Match
     if ($password !== $confirmPassword) {
         die("Passwords do not match!");
     }
 
-    // Hash 
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
     // Photo upload
     $photo = NULL;
     if (!empty($_FILES['photo']['name'])) {
-        $photo = 'uploads/' . basename($_FILES['photo']['name']);
+        $photo = 'assets/' . basename($_FILES['photo']['name']);
         move_uploaded_file($_FILES['photo']['tmp_name'], $photo);
     }
 
-    // SQL 
-    $stmt = $conn->prepare("
-        INSERT INTO users (firstName, lastName, photo, dateOfBirth, gender, country, phoneNumber, email, passWord, confirmPW)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    ");
-    $stmt->bind_param("ssssssssss", $firstName, $lastName, $photo, $dob, $gender, $country, $phoneNumber, $email, $hashedPassword, $hashedPassword);
-
-    if ($stmt->execute()) {
-        echo "Account created successfully!";
-        header("Location: ./userSide/user.php"); 
-        exit;
+    // admin
+    if (strpos($email, '@admin.com') !== false) {
+        $stmt = $conn->prepare("
+            INSERT INTO adminProfile (firstName, lastName, photo, dateOfBirth, gender, country, phoneNumber, email, password)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ");
+        $stmt->bind_param("sssssssss", $firstName, $lastName, $photo, $dob, $gender, $country, $phoneNumber, $email, $hashedPassword);
+        
+        if ($stmt->execute()) {
+            echo "Admin account created successfully!";
+            header("Location: ./adminSide/admin.php");
+            exit;
+        } else {
+            echo "Error: " . $stmt->error;
+        }
     } else {
-        echo "Error: " . $stmt->error;
+        // Insert
+        $stmt = $conn->prepare("
+            INSERT INTO users (firstName, lastName, photo, dateOfBirth, gender, country, phoneNumber, email, passWord)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ");
+        $stmt->bind_param("sssssssss", $firstName, $lastName, $photo, $dob, $gender, $country, $phoneNumber, $email, $hashedPassword);
+        
+        if ($stmt->execute()) {
+            echo "User account created successfully!";
+            header("Location: ./userSide/user.php");
+            exit;
+        } else {
+            echo "Error: " . $stmt->error;
+        }
     }
 
     $stmt->close();

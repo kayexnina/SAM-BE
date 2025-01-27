@@ -3,10 +3,19 @@ session_start();
 
 include("connect.php");
 
-$sql = "SELECT userID, firstName, lastName, photo FROM users";
+$sql = "
+    SELECT 
+        users.userID, 
+        users.firstName, 
+        users.lastName, 
+        users.photo, 
+        AthleticDetails.sportDiscipline, 
+        AthleticDetails.motto 
+    FROM users
+    LEFT JOIN AthleticDetails ON users.userID = AthleticDetails.userID
+";
 $result = $conn->query($sql);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +23,7 @@ $result = $conn->query($sql);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Olympic Athlete Management System</title>
+    <link rel="icon" href="./assets/olympicIcon.ico" type="icon" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -198,23 +208,21 @@ $result = $conn->query($sql);
             </div>
 
             <div class="row my-4 d-flex justify-content-start">
-                <?php while ($row = $result->fetch_assoc()): ?>
-                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 d-flex justify-content-center">
-                        <div class="card m-3">
-                            <img src="assets/athletes/<?php echo $row['photo'] ? basename($row['photo']) : 'default.jpg'; ?>"
-                                class="card-img-top mx-auto mt-4" alt="Athlete Photo">
-                            <div class="card-body d-flex flex-column align-items-center text-center">
-                                <h5 class="cardTitle"><?php echo $row['firstName'] . ' ' . $row['lastName']; ?></h5>
-                                <h4>Sports</h4>
-                                <p class="cardText mx-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                    eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            </div>
-                        </div>
-                    </div>
-                <?php endwhile; ?>
-                <button class="btnSeeMore text-center mx-auto mt-5" onclick="toggleModal()"><b>See more...</b></button>
+    <?php while ($row = $result->fetch_assoc()): ?>
+        <div class="col-12 col-md-6 col-lg-6 col-xl-3 d-flex justify-content-center">
+            <div class="card m-3">
+                <img src="assets/athletes/<?php echo $row['photo'] ? basename($row['photo']) : 'default.jpg'; ?>"
+                     class="card-img-top mx-auto mt-4" alt="Athlete Photo">
+                <div class="card-body d-flex flex-column align-items-center text-center">
+                    <h5 class="cardTitle"><?php echo $row['firstName'] . ' ' . $row['lastName']; ?></h5>
+                    <h4><?php echo $row['sportDiscipline'] ? $row['sportDiscipline'] : 'Not specified'; ?></h4>
+                    <p class="cardText mx-4 text-center"><?php echo $row['motto'] ? $row['motto'] : 'No motto provided'; ?></p>
+                </div>
             </div>
-
+        </div>
+    <?php endwhile; ?>
+    <button class="btnSeeMore text-center mx-auto mt-5" onclick="toggleModal()"><b>See more...</b></button>
+</div>
 
         </div>
     </section>
@@ -261,10 +269,11 @@ $result = $conn->query($sql);
                                         <div class="col-12 col-sm-6">
                                             <label for="gender" class="form-label">Gender</label>
                                             <select name="gender" id="gender" class="form-select" required>
-                                                <option value="M">Male</option>
-                                                <option value="F">Female</option>
-                                                <option value="X">LGBTQIA+</option>
-                                                <option value="P">Prefer not to say</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                                <option value="lgbtqia">LGBTQIA+</option>
+                                                <option value="prefer_not_to_say">Prefer not to say</option>
+
                                             </select>
                                         </div>
                                         <div class="col-12 col-sm-6">
@@ -302,7 +311,7 @@ $result = $conn->query($sql);
                                 <p class="text-center mt-3">
                                     <b>Have an account?</b>
                                     <a onclick="toggleLoginModal()" class="toggle-link"
-                                        style="color: var(--primary-color);">Login</a>
+                                        style="color: var(--primary-color);" type="button">Login</a>
                                 </p>
                             </div>
                         </div>
@@ -327,7 +336,7 @@ $result = $conn->query($sql);
                         </a>
 
                         <h3 style="text-align: center; margin-bottom: 24px;">Login</h3>
-                        <form action="login.php" method="POST" enctype="multipart/form-data">
+                        <form action="login.php" method="POST">
                             <div class="form-container d-flex flex-wrap justify-content-center py-3" style="gap: 1rem;">
                                 <div class="col-12 form-group" style="flex: 0 0 98%;">
                                     <label for="email">Email Address</label>
@@ -345,6 +354,7 @@ $result = $conn->query($sql);
                                 </button>
                             </div>
                         </form>
+
                         <p class="text-center mt-3 login-link">
                             <b>Don't have an account?</b>
                             <a onclick="toggleSignUpModal()" class="toggle-link">Sign Up</a>
@@ -362,7 +372,7 @@ $result = $conn->query($sql);
         <div class="container-fluid">
             <div class="row">
                 <div class="col py-5 mt-5" style="background-color: var(--primary-color);">
-                    <h1 class="aboutTitle text-light mb-3 text-center">OUR SERVICES</h1>
+                    <h1 class="aboutTitle text-light mb-3 text-center py-5">OUR SERVICES</h1>
                     <div class="d-flex justify-content-center flex-wrap">
                         <div class="d-flex flex-column align-items-center m-5">
                             <i class="fa-solid fa-calendar-days text-light" style="font-size: 7rem;"></i>
@@ -403,36 +413,100 @@ $result = $conn->query($sql);
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <div class="card mx-auto mt-4"
-                                    style="width: 100%; max-width: 40rem; background-color: white;">
-                                    <img src="assets/carouselPic10.jpg" class="news-img-top" alt="newsPicture"
+                                    style="width: 100%; max-width: 40rem; background-color: white;"
+                                    onclick="window.open('https://www.olympics.com/en/news/paris-2024-sporting-drama-revered-venues-stirring-singalongs-snoop-dogg', '_blank')"
+                                    type="button">
+                                    <img src="./assets/news/1.png" class="news-img-top" alt="newsPicture"
                                         style="border-radius: 10px; height: 60%; object-fit: cover;">
                                     <div class="card-body p-4">
                                         <h5 class="aboutTitle" style="color: var(--primary-color); font-size: 1.75rem;">
-                                            HEADLINE</h5>
+                                            Paris 2024 Olympics had it all
+                                        </h5>
                                         <p class="newsText" style="font-style: normal">
-                                            Some quick example text to build on the card title and make up the bulk of
-                                            the
-                                            card's content.
+                                            Sporting drama, revered venues, stirring singalongs... and Snoop Dogg
                                         </p>
                                     </div>
                                 </div>
                             </div>
 
+
                             <!-- Another carousel item -->
                             <div class="carousel-item">
                                 <div class="card mx-auto mt-4"
-                                    style="width: 100%; max-width: 40rem; background-color: white;">
-                                    <img src="assets/carouselPic5.png" class="news-img-top" alt="newsPicture"
+                                    style="width: 100%; max-width: 40rem; background-color: white;"
+                                    onclick="window.open('https://www.olympics.com/en/news/records-stats-facts-of-historic-paris-2024', '_blank')"
+                                    type="button">
+                                    <img src="./assets/news/2.png" class="news-img-top" alt="newsPicture"
                                         style="border-radius: 10px; height: 60%; object-fit: cover;">
                                     <div class="card-body p-4">
                                         <h5 class="aboutTitle" style="color: var(--primary-color); font-size: 1.75rem;">
-                                            Another Headline</h5>
+                                            Paris 2024
+                                        </h5>
                                         <p class="newsText" style="font-style: normal">
-                                            More example text for another card in the carousel.
+                                            Records, stats and facts from a historic Olympic Games
                                         </p>
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="carousel-item">
+                                <div class="card mx-auto mt-4"
+                                    style="width: 100%; max-width: 40rem; background-color: white;"
+                                    onclick="window.open('https://www.olympics.com/en/news/paris-2024-breakout-stars-la28-leon-marchand', '_blank')"
+                                    type="button">
+                                    <img src="./assets/news/3.png" class="news-img-top" alt="newsPicture"
+                                        style="border-radius: 10px; height: 60%; object-fit: cover;">
+                                    <div class="card-body p-4">
+                                        <h5 class="aboutTitle" style="color: var(--primary-color); font-size: 1.75rem;">
+                                            Los Angeles 2028
+                                        </h5>
+                                        <p class="newsText" style="font-style: normal">
+                                            Breakout stars from Paris 2024 to watch at LA28, including Leon Marchand and
+                                            Quincy Wilson
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="carousel-item">
+                                <div class="card mx-auto mt-4"
+                                    style="width: 100%; max-width: 40rem; background-color: white;"
+                                    onclick="window.open('https://www.olympics.com/en/news/andy-murray-shelly-ann-fraser-pryce-ten-stars-end-olympic-careers-paris-2024', '_blank')"
+                                    type="button">
+                                    <img src="./assets/news/4.png" class="news-img-top" alt="newsPicture"
+                                        style="border-radius: 10px; height: 60%; object-fit: cover;">
+                                    <div class="card-body p-4">
+                                        <h5 class="aboutTitle" style="color: var(--primary-color); font-size: 1.75rem;">
+                                            From Eliud Kipchoge to Shelly-Ann Fraser-Pryce
+                                        </h5>
+                                        <p class="newsText" style="font-style: normal">
+                                            Ten stars end Olympic careers at Paris 2024
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="carousel-item">
+                                <div class="card mx-auto mt-4"
+                                    style="width: 100%; max-width: 40rem; background-color: white;"
+                                    onclick="window.open('https://www.olympics.com/en/news/carlos-yulo-targets-all-around-medal-title-defenses-at-la-2028', '_blank')"
+                                    type="button">
+                                    <img src="./assets/news/5.png" class="news-img-top" alt="newsPicture"
+                                        style="border-radius: 10px; height: 60%; object-fit: cover;">
+                                    <div class="card-body p-4">
+                                        <h5 class="aboutTitle" style="color: var(--primary-color); font-size: 1.75rem;">
+                                            Carlos Yulo targets all-around medal
+                                        </h5>
+                                        <p class="newsText" style="font-style: normal">
+                                            The talented Filipino already has his eyes set on more hardware after a
+                                            historic double at Paris 2024.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
                         <!-- Carousel Controls -->

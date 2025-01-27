@@ -365,7 +365,7 @@ html {
     font-size: 16px;
   }
 
-  /* #settingsSection label {
+  #settingsSection label {
     font-size: 10px;
   }
   #settingsSection input {
@@ -385,7 +385,7 @@ html {
   .passwordAndDeleteColumm,
   .profileColumn {
     display: none;
-  } */
+  }
 }
 
 @media (max-width: 768px) {
