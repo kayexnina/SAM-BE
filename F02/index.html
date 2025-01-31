@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAM Infograhics</title>
+    <link rel="icon" href="assets/infog.ico" type="icon" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e6f9ff;
+            color: #000000;
+        }
+
+        .header-background {
+            background-color: #007bff;
+        }
+
+        .team-member {
+            text-align: center;
+            margin-bottom: 20px;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .dark-mode {
+            background-color: #343a40;
+            color: #ffffff;
+        }
+
+        .dark-mode .header-background {
+            background-color: #495057;
+        }
+
+        .dark-mode .team-member img {
+            opacity: 0.8;
+        }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        .customRounded {
+            border-radius: 25px;
+        }
+    </style>
+</head>
+
+<body data-aos-delay="100">
+    <header class="header-background text-white text-center py-5">
+        <h1 style="font-family: Arial, Helvetica, sans-serif; font-weight: bolder;">SAM INFOGRAPHICS</h1>
+        <button id="theme-toggle" class="btn btn-outline-light">Switch to Dark Mode</button>
+    </header>
+
+    <div class="container my-5">
+        <img src="./assets/infographics.png" alt="Team Image" class="img-fluid mb-4 customRounded shadow"
+            data-aos="fade-up">
+        <p class="lead text-justify" data-aos="fade-up">We are a dedicated team of researchers working tirelessly to
+            expose the critical issue of cyberbullying among students. Through comprehensive surveys conducted within
+            the PUPSTC community, we aimed to gather insightful perspectives on how social media platforms impact their
+            experiences with cyberbullying and hate speech.
+
+            <br>
+
+            <br> Our infographic, titled '<b>BLOCKED KA SA'KIN, SIS!: PUPSTC Students' Take on Cyberbullying and Hate
+                Speech Challenges in Social Media Platforms</b>,' presents the findings that shed light on the alarming
+            effects of online harassment. We delve into the various dimensions of this pressing issue, including the
+            prevalence
+            of cyberbullying, the psychological implications it fosters, and the collective stance of students on
+            fostering a healthier online environment.
+
+            <br>
+
+            <br> <b>Join us</b> in raising awareness and championing proactive solutions to combat hate speech and
+            cyberbullying in our digital community. Together, we can create a safer and more supportive online space for
+            everyone.
+        </p>
+
+        <h2 class="text-center my-5" style="font-weight: bolder;" data-aos="fade-up">Meet Our Team</h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-12 team-member" data-aos="fade-up">
+                <img src="./assets/carandang.jfif" alt="Member 1">
+                <h5>Mariane Carandang</h5>
+                <p>Student Researcher</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-12 team-member" data-aos="fade-up">
+                <img src="./assets/cristobal.jpg" alt="Member 2">
+                <h5>Kaye Niña Cristobal</h5>
+                <p>Student Researcher</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-12 team-member" data-aos="fade-up">
+                <img src="./assets/diawara.jfif" alt="Member 3">
+                <h5>Janelle Diawara</h5>
+                <p>Graphic Designer</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-12 team-member" data-aos="fade-up">
+                <img src="./assets/magno.jfif" alt="Member 4">
+                <h5>Almira Magno</h5>
+                <p>Student Researcher</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-12 team-member" data-aos="fade-up">
+                <img src="./assets/piga.png" alt="Member 5">
+                <h5>Lea Cydea Piga</h5>
+                <p>Presenter</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+    <script>
+        AOS.init();
+        const themeToggleButton = document.getElementById('theme-toggle');
+        themeToggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            themeToggleButton.textContent = isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+        });
+    </script>
+</body>
+
+</html>
